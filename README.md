@@ -1,4 +1,4 @@
-# ipmedth
+# IPMEDTH
 
 Hoofdfase project op Hogeschool Leiden
 
