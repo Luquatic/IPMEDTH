@@ -17,6 +17,7 @@ class _RecordAudioState extends State<RecordAudio>{
   FlutterSound flutterSound;
 
   String _recorderTxt = '00:00:00';
+  String _playerTxt = '00:00:00';
   double _dbLevel;
 
   @override
