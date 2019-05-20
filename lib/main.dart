@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'RecordAudio.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Applaudio!'),
         ),
+        body:RecordAudio()
       ),
     );
   }
