@@ -12,12 +12,18 @@ class RecordAudio extends StatefulWidget {
 
 class _RecordAudioState extends State<RecordAudio>{
   bool _isRecording = false;
+  bool _isPlaying = false;
   StreamSubscription _recorderSubscription;
   StreamSubscription _dbPeakSubscription;
+  StreamSubscription _playerSubscription;
   FlutterSound flutterSound;
 
   String _recorderTxt = '00:00:00';
+  String _playerTxt = '00:00:00';
   double _dbLevel;
+
+  double slider_current_position = 0.0;
+  double max_duration = 1.0;
 
   @override
   void initState() {
@@ -82,6 +88,51 @@ class _RecordAudioState extends State<RecordAudio>{
     }
   }
 
+  void startPlayer() async{
+    String path = await flutterSound.startPlayer(null);
+    await flutterSound.setVolume(1.0);
+    print('startPlayer: $path');
+
+    try {
+      _playerSubscription = flutterSound.onPlayerStateChanged.listen((e) {
+        if (e != null) {
+          slider_current_position = e.currentPosition;
+          max_duration = e.duration;
+
+
+          DateTime date = new DateTime.fromMillisecondsSinceEpoch(
+              e.currentPosition.toInt(),
+              isUtc: true);
+          String txt = DateFormat('mm:ss:SS', 'en_GB').format(date);
+          this.setState(() {
+            this._isPlaying = true;
+            this._playerTxt = txt.substring(0, 8);
+          });
+        }
+      });
+    } catch (err) {
+      print('error: $err');
+    }
+  }
+
+  void stopPlayer() async{
+    try {
+      String result = await flutterSound.stopPlayer();
+      print('stopPlayer: $result');
+      if (_playerSubscription != null) {
+        _playerSubscription.cancel();
+        _playerSubscription = null;
+      }
+
+      this.setState(() {
+        this._isPlaying = false;
+      });
+    } catch (err) {
+      print('error: $err');
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -116,9 +167,11 @@ class _RecordAudioState extends State<RecordAudio>{
                     child: FlatButton(
                       onPressed: () {
                         if (!this._isRecording) {
+                          startPlayer();
                           return this.startRecorder();
                         }
-                        this.stopRecorder();
+                       this.stopRecorder();
+                       stopPlayer();
                       },
                       padding: EdgeInsets.all(8.0),
                       child: Image(
