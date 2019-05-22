@@ -19,11 +19,7 @@ class _RecordAudioState extends State<RecordAudio>{
   FlutterSound flutterSound;
 
   String _recorderTxt = '00:00:00';
-  String _playerTxt = '00:00:00';
   double _dbLevel;
-
-  double slider_current_position = 0.0;
-  double max_duration = 1.0;
 
   @override
   void initState() {
@@ -96,17 +92,8 @@ class _RecordAudioState extends State<RecordAudio>{
     try {
       _playerSubscription = flutterSound.onPlayerStateChanged.listen((e) {
         if (e != null) {
-          slider_current_position = e.currentPosition;
-          max_duration = e.duration;
-
-
-          DateTime date = new DateTime.fromMillisecondsSinceEpoch(
-              e.currentPosition.toInt(),
-              isUtc: true);
-          String txt = DateFormat('mm:ss:SS', 'en_GB').format(date);
           this.setState(() {
             this._isPlaying = true;
-            this._playerTxt = txt.substring(0, 8);
           });
         }
       });
