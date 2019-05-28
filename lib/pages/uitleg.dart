@@ -46,7 +46,7 @@ class _UitlegPageState extends State<UitlegPage> {
               RaisedButton(
                 child: Text('Volgende'),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/uitleg_profielen');
+                  // Navigator.pushReplacementNamed(context, '/uitleg_profielen');
                 },
               )
             ],
