@@ -10,10 +10,12 @@ class FlutterSound {
   static StreamController<RecordStatus> _recorderController;
   static StreamController<double> _dbPeakController;
   static StreamController<PlayStatus> _playerController;
-  /// Value ranges from 0 to 120
+
+  // Value ranges from 0 to 120
   Stream<double> get onRecorderDbPeakChanged => _dbPeakController.stream;
   Stream<RecordStatus> get onRecorderStateChanged => _recorderController.stream;
   Stream<PlayStatus> get onPlayerStateChanged => _playerController.stream;
+
   bool get isPlaying => _isPlaying;
   bool get isRecording => _isRecording;
 
@@ -69,7 +71,7 @@ class FlutterSound {
             status.currentPosition = status.duration;
           }
           _playerController.add(status);
-          this._isPlaying = false;
+          this._isPlaying = true;
           _removePlayerCallback();
           break;
         default:
@@ -87,7 +89,7 @@ class FlutterSound {
     }
   }
 
-    Future<void> _removeDbPeakCallback() async {
+  Future<void> _removeDbPeakCallback() async {
     if (_dbPeakController != null) {
       _dbPeakController
         ..add(null)
@@ -106,13 +108,14 @@ class FlutterSound {
   }
 
   Future<String> startRecorder(String uri,
-      {int sampleRate = 44100, int numChannels = 2, int bitRate,
-        AndroidEncoder androidEncoder = AndroidEncoder.AAC,
-        IosQuality iosQuality = IosQuality.LOW
-      }) async {
+      {int sampleRate = 44100,
+      int numChannels = 2,
+      int bitRate,
+      AndroidEncoder androidEncoder = AndroidEncoder.AAC,
+      IosQuality iosQuality = IosQuality.LOW}) async {
     try {
       String result =
-      await _channel.invokeMethod('startRecorder', <String, dynamic>{
+          await _channel.invokeMethod('startRecorder', <String, dynamic>{
         'path': uri,
         'sampleRate': sampleRate,
         'numChannels': numChannels,
@@ -121,11 +124,11 @@ class FlutterSound {
         'iosQuality': iosQuality?.value
       });
       _setRecorderCallback();
-
       if (this._isRecording) {
         throw new Exception('Recorder is already recording.');
       }
       this._isRecording = true;
+
       return result;
     } catch (err) {
       throw new Exception(err);
@@ -143,6 +146,16 @@ class FlutterSound {
     _removeRecorderCallback();
     _removeDbPeakCallback();
     return result;
+  }
+
+  Future<String> playWhileStreaming(String uri) async {
+    /*
+      Zolang recorden
+      Audio stream afspelen
+      Als recorder afgesloten
+      Stop recorder
+      Stop audiostream
+      */
   }
 
   Future<String> startPlayer(String uri) async {
@@ -202,8 +215,7 @@ class FlutterSound {
       return result;
     }
 
-    result = await _channel
-        .invokeMethod('setVolume', <String, dynamic>{
+    result = await _channel.invokeMethod('setVolume', <String, dynamic>{
       'volume': volume,
     });
     return result;
@@ -212,18 +224,18 @@ class FlutterSound {
   /// Defines the interval at which the peak level should be updated.
   /// Default is 0.8 seconds
   Future<String> setDbPeakLevelUpdate(double intervalInSecs) async {
-    String result = await _channel
-      .invokeMethod('setDbPeakLevelUpdate', <String, dynamic>{
-    'intervalInSecs': intervalInSecs,
+    String result =
+        await _channel.invokeMethod('setDbPeakLevelUpdate', <String, dynamic>{
+      'intervalInSecs': intervalInSecs,
     });
     return result;
   }
 
   /// Enables or disables processing the Peak level in db's. Default is disabled
   Future<String> setDbLevelEnabled(bool enabled) async {
-    String result = await _channel
-      .invokeMethod('setDbLevelEnabled', <String, dynamic>{
-    'enabled': enabled,
+    String result =
+        await _channel.invokeMethod('setDbLevelEnabled', <String, dynamic>{
+      'enabled': enabled,
     });
     return result;
   }

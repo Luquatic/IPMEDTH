@@ -1,10 +1,8 @@
-import 'package:first_app/pages/uitleg.dart';
-import 'package:first_app/pages/uitleg_profielen.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
-
-import './pages/home.dart';
 import './pages/uitleg.dart';
+import './pages/uitleg_profielen.dart';
+import './pages/home.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
