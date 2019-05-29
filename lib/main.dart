@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
-import './pages/uitleg.dart';
-import './pages/uitleg_profielen.dart';
+
+import './pages/intro.dart';
 import './pages/home.dart';
 
 void main() {
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         ),
       // home: HomePage(),
       routes: {
-        '/': (BuildContext context) => UitlegPage(),
-        '/uitleg_profielen': (BuildContext context) => UitlegProfielenPage(),
+        '/': (BuildContext context) => IntroPage(),
+        '/intro': (BuildContext context) => IntroPage(),
         '/home': (BuildContext context) => HomePage(),
       },
     );

@@ -20,7 +20,14 @@ Widget _buildSideDrawer(BuildContext context) {
           leading: Icon(Icons.edit),
           title: Text('Profielen'),
           onTap: () {},
-        )
+        ),
+        ListTile(
+          leading: Icon(Icons.list),
+          title: Text('Sample'),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/sample');
+          },
+        ),
       ],
     ),
   );

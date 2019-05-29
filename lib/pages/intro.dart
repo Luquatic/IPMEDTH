@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
-class UitlegPage extends StatefulWidget {
+import './home.dart';
+
+class IntroPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _UitlegPageState();
+    return _IntroPageState();
   }
 }
 
-class _UitlegPageState extends State<UitlegPage> {
-  bool _herinnering = false;
+class _IntroPageState extends State<IntroPage> {
+  bool _reminder = false;
+  bool _donotRemind = false;
 
-  _buildUitlegDialog() {
+  Widget _buildIntroDialog() {
     return SimpleDialog(
       title: Text('Uitleg over Applaudio!'),
       children: <Widget>[
@@ -22,10 +25,10 @@ class _UitlegPageState extends State<UitlegPage> {
           child: Row(
             children: <Widget>[
               Checkbox(
-                value: _herinnering,
+                value: _donotRemind,
                 onChanged: (bool value) {
                   setState(() {
-                    _herinnering = value;
+                    _reminder = value;
                   });
                 },
               ),
@@ -40,14 +43,13 @@ class _UitlegPageState extends State<UitlegPage> {
               RaisedButton(
                 child: Text('Afsluiten'),
                 onPressed: () {
+                  _donotRemind = _reminder;
                   Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
               RaisedButton(
                 child: Text('Volgende'),
-                onPressed: () {
-                  // Navigator.pushReplacementNamed(context, '/uitleg_profielen');
-                },
+                onPressed: () {},
               )
             ],
           ),
@@ -56,13 +58,21 @@ class _UitlegPageState extends State<UitlegPage> {
     );
   }
 
+  Widget _getContent(BuildContext context, _donotRemind) {
+    if (_donotRemind == true) {
+      return HomePage();
+    } else {
+      return _buildIntroDialog();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Applaudio!'),
       ),
-      body: _buildUitlegDialog(),
+      body: _getContent(context, _donotRemind),
     );
   }
 }
