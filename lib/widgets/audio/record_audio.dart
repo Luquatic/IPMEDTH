@@ -119,6 +119,13 @@ class _RecordAudioState extends State<RecordAudio> {
     }
   }
 
+  Widget _buildLogo() {
+    return Container(
+      margin: EdgeInsets.only(top: 24.0, left: 15),
+      child: Image.asset('res/images/logo.png'),
+    );
+  }
+
   Widget _buildRecordingColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -144,6 +151,8 @@ class _RecordAudioState extends State<RecordAudio> {
       ],
     );
   }
+
+  Widget _buildVolumeSlider() {}
 
   Widget _buildButtonRow() {
     return Row(
@@ -180,6 +189,7 @@ class _RecordAudioState extends State<RecordAudio> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        _buildLogo(),
         _buildRecordingColumn(),
         _buildButtonRow(),
       ],
