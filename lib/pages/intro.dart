@@ -25,9 +25,10 @@ class _IntroPageState extends State<IntroPage> {
           child: Row(
             children: <Widget>[
               Checkbox(
-                value: _donotRemind,
+                value: _reminder,
                 onChanged: (bool value) {
                   setState(() {
+                    print(_reminder);
                     _reminder = value;
                   });
                 },
@@ -58,21 +59,18 @@ class _IntroPageState extends State<IntroPage> {
     );
   }
 
-  Widget _getContent(BuildContext context, _donotRemind) {
-    if (_donotRemind == true) {
-      return HomePage();
-    } else {
-      return _buildIntroDialog();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Applaudio!'),
-      ),
-      body: _getContent(context, _donotRemind),
-    );
+    print(_reminder);
+    if (_donotRemind == false) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Applaudio!'),
+        ),
+        body: _buildIntroDialog(),
+      );
+    } else {
+      return HomePage();
+    }
   }
 }
