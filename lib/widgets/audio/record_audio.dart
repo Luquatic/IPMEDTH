@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter/services.dart';
 
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -29,6 +30,25 @@ class _RecordAudioState extends State<RecordAudio> {
     flutterSound.setDbPeakLevelUpdate(0.8);
     flutterSound.setDbLevelEnabled(true);
     initializeDateFormatting();
+  }
+
+  static const platform = const MethodChannel('battery');
+
+  // Get battery level.
+  String _batteryLevel = 'Unknown battery level.';
+
+  Future<void> _getBatteryLevel() async {
+    String batteryLevel;
+    try {
+      final int result = await platform.invokeMethod('getBatteryLevel');
+      batteryLevel = 'Battery level at $result % .';
+    } on PlatformException catch (e) {
+      batteryLevel = "Failed to get battery level: '${e.message}'.";
+    }
+
+    setState(() {
+      _batteryLevel = batteryLevel;
+    });
   }
 
   void startRecorder() async {
@@ -155,17 +175,20 @@ class _RecordAudioState extends State<RecordAudio> {
   Widget _buildVolumeSlider() {
     //TODO: Adjust eventually the values for the volume slider
     double _value = 0.0;
-    String profile = 'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
-    
+    String profile =
+        'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
+
     return Container(
       margin: EdgeInsets.only(top: 24.0),
       child: Column(
         children: <Widget>[
-          Align(alignment: Alignment(-0.8, 0.0),
-            child:Text('Profiel: $profile \n\n'),
+          Align(
+            alignment: Alignment(-0.8, 0.0),
+            child: Text('Profiel: $profile \n\n'),
           ),
-          Align(alignment: Alignment(-0.9, 0.0),
-            child:Text('Volume:\n\n'),
+          Align(
+            alignment: Alignment(-0.9, 0.0),
+            child: Text('Volume:$_value\n\n'),
           ),
           Slider(
               value: _value,
@@ -212,6 +235,23 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
+  _buildTest(){
+      return Material(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            RaisedButton(
+              child: Text('Get Battery Level'),
+              onPressed: _getBatteryLevel,
+            ),
+            Text(_batteryLevel),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -220,6 +260,7 @@ class _RecordAudioState extends State<RecordAudio> {
         _buildVolumeSlider(),
         //_buildRecordingColumn(),
         _buildButtonRow(),
+        _buildTest()
       ],
     );
   }

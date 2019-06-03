@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
 import 'package:flutter/material.dart';
 import 'package:Applaudio/styles/theme.dart' as Theme; //package for the custom styles
 // import 'package:flutter/rendering.dart';
