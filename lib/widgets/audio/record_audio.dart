@@ -152,7 +152,34 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildVolumeSlider() {}
+  Widget _buildVolumeSlider() {
+    //TODO: Adjust eventually the values for the volume slider
+    double _value = 0.0;
+    String profile = 'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
+    
+    return Container(
+      margin: EdgeInsets.only(top: 24.0),
+      child: Column(
+        children: <Widget>[
+          Align(alignment: Alignment(-0.8, 0.0),
+            child:Text('Profiel: $profile \n\n'),
+          ),
+          Align(alignment: Alignment(-0.9, 0.0),
+            child:Text('Volume:\n\n'),
+          ),
+          Slider(
+              value: _value,
+              min: 0.0,
+              max: 100,
+              onChanged: (double value) {
+                setState(() {
+                  _value = value;
+                });
+              })
+        ],
+      ),
+    );
+  }
 
   Widget _buildButtonRow() {
     return Row(
@@ -190,7 +217,8 @@ class _RecordAudioState extends State<RecordAudio> {
     return ListView(
       children: <Widget>[
         _buildLogo(),
-        _buildRecordingColumn(),
+        _buildVolumeSlider(),
+        //_buildRecordingColumn(),
         _buildButtonRow(),
       ],
     );
