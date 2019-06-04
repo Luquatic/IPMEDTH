@@ -43,18 +43,26 @@ public class MainActivity extends FlutterActivity {
     am = (AudioManager) getSystemService(getApplicationContext().AUDIO_SERVICE);
     previousRingerMode = am.getRingerMode();    //store previous ring mode to change it back when app is closed
 
-    new MethodChannel(getFlutterView(), "battery").setMethodCallHandler(
+    new MethodChannel(getFlutterView(), "audiorecorder").setMethodCallHandler(
             (call, result) -> {
-              if (call.method.equals("getBatteryLevel")) {
-                int batteryLevel = getBatteryLevel();
+              switch(call.method){
+                case "setWaarde":
+                  double waarde = call.argument("waarde");
+                  setWaarde((int) waarde);
+                  Log.d(TAG, Integer.toString(getWaarde()));
+                  break;
+                case "getBatteryLevel":
+                  int batteryLevel = getBatteryLevel();
 
-                if (batteryLevel != -1) {
-                  result.success(batteryLevel);
-                } else {
-                  result.error("UNAVAILABLE", "Battery level not available.", null);
-                }
-              } else {
-                result.notImplemented();
+                  if (batteryLevel != -1) {
+                    result.success(batteryLevel);
+                  } else {
+                    result.error("UNAVAILABLE", "Battery level not available.", null);
+                  }
+                  break;
+                  default:
+                    result.notImplemented();
+                    break;
               }
             }
     );

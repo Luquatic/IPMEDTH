@@ -21,7 +21,7 @@ ANDROID_ABI:UNINITIALIZED=x86_64
 ANDROID_NDK:UNINITIALIZED=C:\Users\ramon\AppData\Local\Android\Sdk\ndk-bundle
 
 //No help, variable specified on the command line.
-ANDROID_PLATFORM:UNINITIALIZED=android-16
+ANDROID_PLATFORM:UNINITIALIZED=android-26
 
 //Archiver
 CMAKE_AR:FILEPATH=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/x86_64-linux-android-ar.exe
@@ -193,10 +193,10 @@ Project_BINARY_DIR:STATIC=C:/Users/ramon/Desktop/school/ipmedth/Applaudio/androi
 Project_SOURCE_DIR:STATIC=C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app
 
 //Path to a library.
-log-lib:FILEPATH=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/x86_64-linux-android/21/liblog.so
+log-lib:FILEPATH=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/x86_64-linux-android/26/liblog.so
 
 //Dependencies for the target
-native-lib_LIB_DEPENDS:STATIC=general;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/x86_64-linux-android/21/liblog.so;general;aaudio;
+native-lib_LIB_DEPENDS:STATIC=general;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/x86_64-linux-android/26/liblog.so;general;aaudio;
 
 
 ########################

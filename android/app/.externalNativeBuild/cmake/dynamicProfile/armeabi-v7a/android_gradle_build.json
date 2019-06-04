@@ -21,19 +21,19 @@
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"flags" : "  --target=armv7-none-linux-androideabi26 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
 					"src" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/src/main/cpp/jni_bridge.cpp",
 					"workingDirectory" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"flags" : "  --target=armv7-none-linux-androideabi26 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
 					"src" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/src/main/cpp/EchoAudioEngine.cpp",
 					"workingDirectory" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"flags" : "  --target=armv7-none-linux-androideabi26 --gcc-toolchain=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++14 -O0 -fno-limit-debug-info  -fPIC    -c ",
 					"src" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/src/main/cpp/AudioEffect.cpp",
 					"workingDirectory" : "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/armeabi-v7a"
 				}

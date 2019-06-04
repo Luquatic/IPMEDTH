@@ -3,7 +3,7 @@ arguments :
 -HC:\Users\ramon\Desktop\school\ipmedth\Applaudio\android\app
 -BC:\Users\ramon\Desktop\school\ipmedth\Applaudio\android\app\.externalNativeBuild\cmake\dynamicRelease\arm64-v8a
 -DANDROID_ABI=arm64-v8a
--DANDROID_PLATFORM=android-16
+-DANDROID_PLATFORM=android-26
 -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\ramon\Desktop\school\ipmedth\Applaudio\build\app\intermediates\cmake\dynamicRelease\obj\arm64-v8a
 -DCMAKE_BUILD_TYPE=Debug
 -DANDROID_NDK=C:\Users\ramon\AppData\Local\Android\Sdk\ndk-bundle

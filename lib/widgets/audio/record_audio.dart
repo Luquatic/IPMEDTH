@@ -22,7 +22,7 @@ class _RecordAudioState extends State<RecordAudio> {
   String _recorderTxt = '00:00:00';
   double _dbLevel;
   //TODO: Adjust eventually the values for the volume slider and replace this for the _dbLevel
-  double _value = 100;
+  double _value = 0.0;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _RecordAudioState extends State<RecordAudio> {
     initializeDateFormatting();
   }
 
-  static const platform = const MethodChannel('battery');
+  static const platform = const MethodChannel('audiorecorder');
 
   // Get battery level.
   String _batteryLevel = 'Unknown battery level.';
@@ -53,6 +53,16 @@ class _RecordAudioState extends State<RecordAudio> {
     });
   }
 
+  Future<double> _setWaarde(double waarde) async {
+    double result = 0.0;
+    try{
+      result = await platform.invokeMethod('setWaarde', {"waarde":waarde});
+    } on PlatformException catch (e) {
+      print(e.message);
+    } 
+    return result;
+  }
+  
   void startRecorder() async {
     try {
       String path = await flutterSound.startRecorder(null);
@@ -175,7 +185,7 @@ class _RecordAudioState extends State<RecordAudio> {
   }
 
   Widget _buildVolumeSlider() {
-    String roundVolume = _value.toStringAsFixed(2);
+    String roundVolume = _value.toStringAsFixed(1);
     String profile =
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
@@ -193,11 +203,12 @@ class _RecordAudioState extends State<RecordAudio> {
           ),
           Slider(
               value: _value,
-              min: 100,
-              max: 5000,
+              min: 0.0,
+              max: 100,
               onChanged: (double value) {
                 setState(() {
                   _value = value;
+                  _setWaarde(_value);
                 });
               })
         ],
@@ -215,11 +226,9 @@ class _RecordAudioState extends State<RecordAudio> {
             child: FlatButton(
               onPressed: () {
                 if (!this._isRecording) {
-                  startPlayer();
                   return this.startRecorder();
                 }
                 this.stopRecorder();
-                stopPlayer();
               },
               padding: EdgeInsets.all(8.0),
               child: Image(
