@@ -22,7 +22,7 @@ class _RecordAudioState extends State<RecordAudio> {
   String _recorderTxt = '00:00:00';
   double _dbLevel;
   //TODO: Adjust eventually the values for the volume slider and replace this for the _dbLevel
-  double _value = 0.0;
+  double _value = 100;
 
   @override
   void initState() {
@@ -193,8 +193,8 @@ class _RecordAudioState extends State<RecordAudio> {
           ),
           Slider(
               value: _value,
-              min: 0.0,
-              max: 100,
+              min: 100,
+              max: 5000,
               onChanged: (double value) {
                 setState(() {
                   _value = value;

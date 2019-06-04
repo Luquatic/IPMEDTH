@@ -8,9 +8,7 @@ import android.os.BatteryManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.util.Log;
 
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodChannel;
@@ -32,15 +30,18 @@ public class MainActivity extends FlutterActivity {
   AudioManager am;
 
   // Used to load the 'native-lib' library on application startup.
-//  static {
-//    System.loadLibrary("native-lib");
-//  }
+  static {
+    System.loadLibrary("native-lib");
+  }
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     GeneratedPluginRegistrant.registerWith(this);
 
+    //put the phone in vibrate mode when the app starts to silence incoming messages and calls
+    am = (AudioManager) getSystemService(getApplicationContext().AUDIO_SERVICE);
+    previousRingerMode = am.getRingerMode();    //store previous ring mode to change it back when app is closed
 
     new MethodChannel(getFlutterView(), "battery").setMethodCallHandler(
             (call, result) -> {
@@ -57,6 +58,7 @@ public class MainActivity extends FlutterActivity {
               }
             }
     );
+    create();
   }
 
   private int getBatteryLevel() {
@@ -70,4 +72,41 @@ public class MainActivity extends FlutterActivity {
           intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
     }
   }
+
+  @Override
+  public void onResume(){
+    super.onResume();
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+  }
+
+  public void onDestroy(){
+    delete();
+    super.onDestroy();
+  }
+
+  public void toggleEcho() {
+    if (isPlaying) {
+      stopEchoing();
+    } else {
+      startEchoing();
+    }
+  }
+
+  private void startEchoing() {
+    Log.d(TAG, "Attempting to start");
+
+    setEchoOn(true);
+    isPlaying = true;
+  }
+
+  private void stopEchoing() {
+    Log.d(TAG, "Playing, attempting to stop");
+    setEchoOn(false);
+    isPlaying = false;
+  }
+
 }
