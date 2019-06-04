@@ -21,6 +21,8 @@ class _RecordAudioState extends State<RecordAudio> {
 
   String _recorderTxt = '00:00:00';
   double _dbLevel;
+  //TODO: Adjust eventually the values for the volume slider and replace this for the _dbLevel
+  double _value = 0.0;
 
   @override
   void initState() {
@@ -173,8 +175,7 @@ class _RecordAudioState extends State<RecordAudio> {
   }
 
   Widget _buildVolumeSlider() {
-    //TODO: Adjust eventually the values for the volume slider
-    double _value = 0.0;
+    String roundVolume = _value.toStringAsFixed(2);
     String profile =
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
@@ -188,7 +189,7 @@ class _RecordAudioState extends State<RecordAudio> {
           ),
           Align(
             alignment: Alignment(-0.9, 0.0),
-            child: Text('Volume:$_value\n\n'),
+            child: Text('Volume:$roundVolume\n\n'),
           ),
           Slider(
               value: _value,
@@ -235,8 +236,8 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  _buildTest(){
-      return Material(
+  _buildTest() {
+    return Material(
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

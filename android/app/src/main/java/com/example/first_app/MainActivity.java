@@ -1,35 +1,46 @@
-// Copyright 2017 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 package com.example.first_app;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.BatteryManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import io.flutter.app.FlutterActivity;
-import io.flutter.plugin.common.EventChannel;
-import io.flutter.plugin.common.EventChannel.EventSink;
-import io.flutter.plugin.common.EventChannel.StreamHandler;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity {
+
+  private static final int WAVEMAKER2_REQUEST = 0;
+  private static final String TAG = MainActivity.class.toString();
+
+  static native void create();
+  static native void delete();
+  static native void setEchoOn(boolean isEchoOn);
+  public native void setWaarde(int waarde);
+  public native int getWaarde();
+  private boolean isPlaying;
+
+  int previousRingerMode;
+  AudioManager am;
+
+  // Used to load the 'native-lib' library on application startup.
+//  static {
+//    System.loadLibrary("native-lib");
+//  }
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     GeneratedPluginRegistrant.registerWith(this);
+
 
     new MethodChannel(getFlutterView(), "battery").setMethodCallHandler(
             (call, result) -> {
