@@ -39,7 +39,7 @@ class _HomePageButtonState extends State<HomePage> {
     return Scaffold(
       drawer: _buildSideDrawer(context),
       appBar: AppBar(
-        title: Text('Applaudio!'),
+        title: Text(''),
         // actions: <Widget>[
         //   PopupMenuButton<String>(itemBuilder: (BuildContext context) {
         //     return Constants.choices.map((String choice) {

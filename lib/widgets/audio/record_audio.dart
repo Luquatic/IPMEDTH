@@ -52,7 +52,9 @@ class _RecordAudioState extends State<RecordAudio> {
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
-      child: Image.asset('res/images/logo.png'),
+      child: Image.asset('res/images/logo.png',
+      height: 70.0,
+      width: 70.0),
     );
   }
 
