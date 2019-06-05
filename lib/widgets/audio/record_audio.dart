@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
 
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+
 class RecordAudio extends StatefulWidget {
   @override
   _RecordAudioState createState() => new _RecordAudioState();
@@ -90,21 +92,46 @@ class _RecordAudioState extends State<RecordAudio> {
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
     return Container(
-      margin: EdgeInsets.only(top: 24.0),
+      margin: EdgeInsets.only(top: 24.0,left:10,right:10),
       child: Column(
         children: <Widget>[
           Align(
-            alignment: Alignment(-0.8, 0.0),
+            alignment: Alignment(-0, 0.0),
             child: Text('Profiel: $profile \n\n'),
           ),
           Align(
-            alignment: Alignment(-0.9, 0.0),
+            alignment: Alignment(-0, 0.0),
             child: Text('Volume:$roundVolume\n\n'),
+          ),
+          FluidSlider(
+            min: 0.0,
+            max: 100.0,
+            value: _value,
+
+            onChanged: (double newValue) {
+              setState(() {
+                _value = newValue;
+                _setWaarde(_value);
+              });
+            },
+            onChangeStart: (double newValue){
+              setState(() {
+               _value = newValue;
+               _setWaarde(_value);
+             });
+            },
+
+              onChangeEnd: (double newValue){
+                setState(() {
+                _value = newValue;
+                _setWaarde(_value);
+              });
+            }
           ),
           Slider(
               value: _value,
               min: 0.0,
-              max: 100,
+              max: 100.0,
               onChanged: (double value) {
                 setState(() {
                   _value = value;
