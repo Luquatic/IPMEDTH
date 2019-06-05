@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/services.dart';
 
 import 'dart:async';
@@ -36,27 +36,29 @@ class _RecordAudioState extends State<RecordAudio> {
   Future<void> _toggleEcho() async {
     try {
       await platform.invokeMethod('toggleEcho');
-      //TODO: acces variable from Java here to set the right state (this is only neccessary for changing the button)
-      // if () {
-      //   this.setState(() {
-      //     this._isRecording = true;
-      //   });
-      // } else {
-      //   this.setState(() {
-      //     this._isRecording = false;
-      //   });
-      // }
     } on PlatformException catch (e) {
       print(e.message);
     }
   }
 
+  void startRecorder(){
+    _toggleEcho();
+    this.setState((){
+      this._isRecording = true;
+    });
+  }
+
+  void stopRecorder(){
+    _toggleEcho();
+    this.setState((){
+      this._isRecording = false;
+    });
+  }
+
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
-      child: Image.asset('res/images/logo.png',
-      height: 70.0,
-      width: 70.0),
+      child: Image.asset('res/images/logo.png', height: 70.0, width: 70.0),
     );
   }
 
@@ -152,13 +154,16 @@ class _RecordAudioState extends State<RecordAudio> {
           child: ClipOval(
             child: FlatButton(
               onPressed: () {
-                _toggleEcho();
+                if(!this._isRecording){
+                  return this.startRecorder();
+                }
+                this.stopRecorder();
               },
               padding: EdgeInsets.all(8.0),
               child: Image(
                 image: this._isRecording
-                    ? AssetImage('res/icons/ic_stop.png')
-                    : AssetImage('res/icons/ic_mic.png'),
+                    ? AssetImage('res/icons/mic-off.png')
+                    : AssetImage('res/icons/mic-on.png'),
               ),
             ),
           ),
