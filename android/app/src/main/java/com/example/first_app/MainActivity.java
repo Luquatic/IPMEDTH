@@ -53,9 +53,9 @@ public class MainActivity extends FlutterActivity {
                 case "toggleEcho":
                   toggleEcho();
                   break;
-                  default:
-                    result.notImplemented();
-                    break;
+                default:
+                  result.notImplemented();
+                  break;
               }
             }
     );
@@ -76,7 +76,6 @@ public class MainActivity extends FlutterActivity {
     delete();
     super.onDestroy();
   }
-
 
   public void toggleEcho() {
     if (isPlaying) {
