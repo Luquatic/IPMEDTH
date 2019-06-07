@@ -46,7 +46,9 @@ class _Profielen extends State<Profielen> {
       floatingActionButton:FloatingActionButton(
       child: Icon(Icons.add),
       backgroundColor: new Color(0xFFB4C42D),
-      onPressed: () {},
+      onPressed: () {
+         Navigator.pushNamed(context, '/addprofiel');
+      },
     )
     );
   }
