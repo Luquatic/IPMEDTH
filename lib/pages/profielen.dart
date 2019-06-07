@@ -6,39 +6,30 @@ class Profielen extends StatefulWidget {
 }
 
 class _Profielen extends State<Profielen> {
-
-  
-Widget _buildSideDrawer(BuildContext context) {
-  return Drawer(
-    child: Column(
-      children: <Widget>[
-        AppBar(
-          automaticallyImplyLeading: false,
-          title: Text('Menu'),
-        ),
-        ListTile(
-          leading: Icon(Icons.list),
-          title: Text('Home'),
-          onTap: () {
-            Navigator.pushReplacementNamed(context, '/home');
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.edit),
-          title: Text('Profielen'),
-          onTap: () {
-            Navigator.pushNamed(context, '/profielen');
-          },
-        ),
-      ],
-    ),
-  );
-}
-  
-  Widget _buildLogo() {
-    return Container(
-      margin: EdgeInsets.only(top: 24.0, left: 15),
-      child: Image.asset('res/images/logo.png', height: 70.0, width: 70.0),
+  Widget _buildSideDrawer(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: <Widget>[
+          AppBar(
+            automaticallyImplyLeading: false,
+            title: Text('Menu'),
+          ),
+          ListTile(
+            leading: Icon(Icons.list),
+            title: Text('Home'),
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/home');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Profielen'),
+            onTap: () {
+              Navigator.pushNamed(context, '/profielen');
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -48,18 +39,15 @@ Widget _buildSideDrawer(BuildContext context) {
       drawer: _buildSideDrawer(context),
       appBar: AppBar(
         title: Text(''),
-        // actions: <Widget>[
-        //   PopupMenuButton<String>(itemBuilder: (BuildContext context) {
-        //     return Constants.choices.map((String choice) {
-        //       return PopupMenuItem<String>(
-        //         value: choice,
-        //         child: Text(choice),
-        //       );
-        //     }).toList();
-        //   })
-        // ],
       ),
-      body: _buildLogo(),
+      body: ListView(children: <Widget>[
+       
+      ]),
+      floatingActionButton:FloatingActionButton(
+      child: Icon(Icons.add),
+      backgroundColor: new Color(0xFFB4C42D),
+      onPressed: () {},
+    )
     );
   }
 }
