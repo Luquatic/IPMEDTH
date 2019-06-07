@@ -1,1 +1,2 @@
-ninja: no work to do.
+[1/2] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o
+[2/2] Linking CXX shared library C:\Users\ramon\Desktop\school\ipmedth\Applaudio\build\app\intermediates\cmake\debug\obj\x86\libnative-lib.so
