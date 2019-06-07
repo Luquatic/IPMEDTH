@@ -21,6 +21,23 @@ class _RecordAudioState extends State<RecordAudio> {
 
   static const platform = const MethodChannel('audiorecorder');
 
+    // Get battery level.
+  String _batteryLevel = 'Unknown battery level.';
+
+  Future<void> _getBatteryLevel() async {
+    String batteryLevel;
+    try {
+      final int result = await platform.invokeMethod('getBatteryLevel');
+      batteryLevel = 'Battery level at $result % .';
+    } on PlatformException catch (e) {
+      batteryLevel = "Failed to get battery level: '${e.message}'.";
+    }
+
+    setState(() {
+      _batteryLevel = batteryLevel;
+    });
+  }
+
   Future<double> _setWaarde(double waarde) async {
     double result = 0.0;
     try {
@@ -39,18 +56,35 @@ class _RecordAudioState extends State<RecordAudio> {
     }
   }
 
-  void startRecorder(){
+  void startRecorder() {
     _toggleEcho();
-    this.setState((){
+    this.setState(() {
       this._isRecording = true;
     });
   }
 
-  void stopRecorder(){
+  void stopRecorder() {
     _toggleEcho();
-    this.setState((){
+    this.setState(() {
       this._isRecording = false;
     });
+  }
+
+  Widget _buildBatery(){
+    return Material(
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          RaisedButton(
+            child: Text('Get Battery Level'),
+            onPressed: _getBatteryLevel,
+          ),
+          Text(_batteryLevel),
+        ],
+      ),
+    ),
+  );
   }
 
   Widget _buildLogo() {
@@ -127,7 +161,7 @@ class _RecordAudioState extends State<RecordAudio> {
           child: ClipOval(
             child: FlatButton(
               onPressed: () {
-                if(!this._isRecording){
+                if (!this._isRecording) {
                   return this.startRecorder();
                 }
                 this.stopRecorder();
@@ -154,7 +188,8 @@ class _RecordAudioState extends State<RecordAudio> {
         _buildLogo(),
         _buildVolumeSlider(),
         //_buildRecordingColumn(),
-        _buildButtonRow()
+        _buildButtonRow(),
+        _buildBatery()
       ],
     );
   }
