@@ -4,8 +4,14 @@ import 'package:flutter/services.dart';
 
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
-
 import 'package:flutter_xlider/flutter_xlider.dart';
+
+import 'package:Applaudio/styles/theme.dart';
+
+
+
+final lichtGroen = const Color(0xffB4C42D);
+final donkerGroen = const Color(0xff7D8B24);
 
 class RecordAudio extends StatefulWidget {
   @override
@@ -128,7 +134,7 @@ class _RecordAudioState extends State<RecordAudio> {
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
     return Container(
-      margin: EdgeInsets.only(top: 24.0,left:10,right:10),
+      margin: EdgeInsets.only(top: 20.0,left:10,right:10,bottom: 20),
       child: Column(
         children: <Widget>[
           Align(
@@ -144,6 +150,24 @@ class _RecordAudioState extends State<RecordAudio> {
             min: 0,
             max: 100,
             //axis: Axis.vertical,
+
+            handler: FlutterSliderHandler(
+              child: Material(
+                type: MaterialType.circle,
+                color: donkerGroen,
+                elevation: 1,
+                child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Icon(Icons.volume_up, size: 25, color: Colors.white)),
+              ),
+            ),
+
+            trackBar: FlutterSliderTrackBar(
+              activeTrackBarColor: lichtGroen,
+              activeTrackBarHeight: 10,
+              inactiveTrackBarColor: Colors.grey.withOpacity(0.5),
+              inactiveTrackBarHeight: 10,
+            ),
 
             onDragging: (handlerIndex, lowerValue, upperValue) {
               upperValue = upperValue;
@@ -163,8 +187,8 @@ class _RecordAudioState extends State<RecordAudio> {
     return Row(
       children: <Widget>[
         Container(
-          width: 56.0,
-          height: 56.0,
+          width: 100.0,
+          height: 100.0,
           child: ClipOval(
             child: FlatButton(
               onPressed: () {
