@@ -3,3 +3,7 @@
 29	1150	0	CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o	d6737d1005b7fccf
 35	1252	0	CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o	c3de571b9d0c45fb
 1253	1478	0	C:/Users/ramon/Desktop/school/ipmedth/Applaudio/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	51d8bece4fe0b0d6
+22	6828	0	CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o	78f515b5f107b384
+6828	8212	0	C:/Users/ramon/Desktop/school/ipmedth/Applaudio/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	51d8bece4fe0b0d6
+6	723	0	CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o	78f515b5f107b384
+723	988	0	C:/Users/ramon/Desktop/school/ipmedth/Applaudio/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	51d8bece4fe0b0d6
