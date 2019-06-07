@@ -1,13 +1,16 @@
 import 'dart:async';
 
+import 'package:Applaudio/pages/profielen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 import 'package:Applaudio/styles/theme.dart' as Theme; //package for the custom styles
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/rendering.dart';
 
 import './pages/intro.dart';
 import './pages/home.dart';
+import './pages/profielen.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -25,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => IntroPage(),
         '/intro': (BuildContext context) => IntroPage(),
         '/home': (BuildContext context) => HomePage(),
+        '/profielen': (BuildContext context) => Profielen()
       },
     );
   }
