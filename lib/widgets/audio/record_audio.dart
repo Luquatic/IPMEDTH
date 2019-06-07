@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
 
-import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 
 class RecordAudio extends StatefulWidget {
   @override
@@ -139,41 +139,21 @@ class _RecordAudioState extends State<RecordAudio> {
             alignment: Alignment(-0, 0.0),
             child: Text('Volume:$roundVolume\n\n'),
           ),
-          FluidSlider(
-            min: 0.0,
-            max: 100.0,
-            value: _value,
+          FlutterSlider(
+            values: [_value],
+            min: 0,
+            max: 100,
+            //axis: Axis.vertical,
 
-            onChanged: (double newValue) {
+            onDragging: (handlerIndex, lowerValue, upperValue) {
+              upperValue = upperValue;
+
               setState(() {
-                _value = newValue;
-                _setWaarde(_value);
+              _value = lowerValue;
+              _setWaarde(_value);
               });
             },
-            onChangeStart: (double newValue){
-              setState(() {
-               _value = newValue;
-               _setWaarde(_value);
-             });
-            },
-
-              onChangeEnd: (double newValue){
-                setState(() {
-                _value = newValue;
-                _setWaarde(_value);
-              });
-            }
           ),
-          Slider(
-              value: _value,
-              min: 0.0,
-              max: 100.0,
-              onChanged: (double value) {
-                setState(() {
-                  _value = value;
-                  _setWaarde(_value);
-                });
-              })
         ],
       ),
     );
