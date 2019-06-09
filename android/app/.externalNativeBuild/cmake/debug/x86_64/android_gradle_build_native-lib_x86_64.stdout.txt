@@ -1,2 +1,4 @@
-[1/2] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o
-[2/2] Linking CXX shared library C:\Users\ramon\Desktop\school\ipmedth\Applaudio\build\app\intermediates\cmake\debug\obj\x86_64\libnative-lib.so
+[1/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o
+[2/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o
+[3/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o
+[4/4] Linking CXX shared library /Users/kimwijfje/Documents/Flutter/IPMEDTH/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so

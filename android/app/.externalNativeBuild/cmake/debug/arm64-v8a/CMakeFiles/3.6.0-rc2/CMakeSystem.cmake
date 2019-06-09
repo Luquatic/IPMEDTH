@@ -1,9 +1,9 @@
-set(CMAKE_HOST_SYSTEM "Windows-10.0.17134")
-set(CMAKE_HOST_SYSTEM_NAME "Windows")
-set(CMAKE_HOST_SYSTEM_VERSION "10.0.17134")
-set(CMAKE_HOST_SYSTEM_PROCESSOR "AMD64")
+set(CMAKE_HOST_SYSTEM "Darwin-18.6.0")
+set(CMAKE_HOST_SYSTEM_NAME "Darwin")
+set(CMAKE_HOST_SYSTEM_VERSION "18.6.0")
+set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-include("C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake")
+include("/Users/kimwijfje/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake")
 
 set(CMAKE_SYSTEM "Android-1")
 set(CMAKE_SYSTEM_NAME "Android")

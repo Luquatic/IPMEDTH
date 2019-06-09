@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
+
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
 import 'package:Applaudio/styles/theme.dart';
 
@@ -145,38 +146,15 @@ class _RecordAudioState extends State<RecordAudio> {
             alignment: Alignment(-0, 0.0),
             child: Text('Volume:$roundVolume\n\n'),
           ),
-          FlutterSlider(
-            values: [_value],
-            min: 0,
-            max: 100,
-            //axis: Axis.vertical,
-
-            handler: FlutterSliderHandler(
-              child: Material(
-                type: MaterialType.circle,
-                color: donkerGroen,
-                elevation: 1,
-                child: Container(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(Icons.volume_up, size: 25, color: Colors.white)),
-              ),
-            ),
-
-            trackBar: FlutterSliderTrackBar(
-              activeTrackBarColor: lichtGroen,
-              activeTrackBarHeight: 10,
-              inactiveTrackBarColor: Colors.grey.withOpacity(0.5),
-              inactiveTrackBarHeight: 10,
-            ),
-
-            onDragging: (handlerIndex, lowerValue, upperValue) {
-              upperValue = upperValue;
-
+          FluidSlider(
+            value: _value,
+            onChanged: (double newValue) {
               setState(() {
-              _value = lowerValue;
-              _setWaarde(_value);
+                _value = newValue;
               });
             },
+            min: 0.0,
+            max: 100.0,
           ),
         ],
       ),
