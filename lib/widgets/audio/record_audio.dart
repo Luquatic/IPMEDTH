@@ -23,12 +23,9 @@ class RecordAudio extends StatefulWidget {
 
 class _RecordAudioState extends State<RecordAudio> {
   bool _isRecording = false;
-  FlutterSound flutterSound;
 
-  String _recorderTxt = '00:00:00';
-  double _dbLevel;
   //TODO: Adjust eventually the values for the volume slider and replace this for the _dbLevel
-  double _value = 0.0;
+  double _volume = 0.0;
 
   static const platform = const MethodChannel('audiorecorder');
 
@@ -71,34 +68,8 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildRecordingColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(top: 24.0, bottom: 16.0),
-          child: Text(
-            this._recorderTxt,
-            style: TextStyle(
-              fontSize: 48.0,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        _isRecording
-            ? LinearProgressIndicator(
-                value: 100.0 / 160.0 * (this._dbLevel ?? 1) / 100,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                backgroundColor: Colors.red,
-              )
-            : Container()
-      ],
-    );
-  }
-
   Widget _buildVolumeSlider() {
-    String roundVolume = _value.toStringAsFixed(1);
+    String roundVolume = _volume.toStringAsFixed(1);
     String profile =
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
@@ -115,10 +86,10 @@ class _RecordAudioState extends State<RecordAudio> {
             child: Text('Volume:$roundVolume\n\n'),
           ),
           FluidSlider(
-            value: _value,
+            value: _volume,
             onChanged: (double newValue) {
               setState(() {
-                _value = newValue;
+                _volume = newValue;
               });
             },
             min: 0.0,
@@ -171,7 +142,6 @@ class _RecordAudioState extends State<RecordAudio> {
       children: <Widget>[
         _buildLogo(),
         _buildVolumeSlider(),
-        //_buildRecordingColumn(),
         _buildButtonRow()
       ],
     );

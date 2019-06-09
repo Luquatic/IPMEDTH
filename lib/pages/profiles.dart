@@ -1,12 +1,24 @@
+import 'dart:io';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 
+import 'package:Applaudio/libraries/data_storage.dart';
+
 class Profiles extends StatefulWidget {
+  final DataStorage dataStorage;
+
+  const Profiles({Key key, this.dataStorage}) : super(key: key);
+
   @override
   _Profiles createState() => new _Profiles();
 }
 
 class _Profiles extends State<Profiles> {
+  String _profileName = '';
+  double _value = 0.0;
+
   Widget _buildSideDrawer(BuildContext context) {
     return Drawer(
       child: Column(
@@ -35,8 +47,6 @@ class _Profiles extends State<Profiles> {
   }
 
   Future<String> _addProfileDialog(BuildContext context) async {
-    String profileName = '';
-    double _value = 0.0;
     return showDialog<String>(
       context: context,
       barrierDismissible:
@@ -46,17 +56,20 @@ class _Profiles extends State<Profiles> {
           title: Text('Voeg een profiel toe'),
           content: Container(
               child: ListView(
-              shrinkWrap: true,
-              children: <Widget>[
-              Text('Voeg hier een profiel toe om deze in het hoofdmenu te gebruiken. Hierdoor heb je altijd snel je instellingen bij de hand.'),
+            shrinkWrap: true,
+            children: <Widget>[
+              Text(
+                  'Voeg hier een profiel toe om deze in het hoofdmenu te gebruiken. Hierdoor heb je altijd snel je instellingen bij de hand.'),
               SizedBox(height: 15),
               Text('Profiel naam:'),
               TextField(
                 autofocus: true,
-                decoration: new InputDecoration(
-                    hintText: 'Naam van profiel ...'),
+                decoration:
+                    new InputDecoration(hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
-                  profileName = value;
+                  this.setState(() {
+                    _profileName = value;
+                  });
                 },
               ),
               SizedBox(height: 15),
@@ -78,20 +91,28 @@ class _Profiles extends State<Profiles> {
             FlatButton(
               child: Text('Afsluiten'),
               onPressed: () {
-                Navigator.of(context).pop(profileName);
+                this.setState(() {
+                  //reset parameters if user closed the box
+                  _profileName = '';
+                  _value = 0.0;
+                });
+                Navigator.of(context).pop();
               },
             ),
             FlatButton(
               child: Text('Opslaan'),
               onPressed: () {
-                //TODO: Save data here
-                Navigator.of(context).pop(profileName);
+                Navigator.of(context).pop(_profileName);
               },
             ),
           ],
         );
       },
     );
+  }
+
+  Widget _getProfiles() {
+    //TODO: check if there are profiles and view them, if there are no profiles show that instead
   }
 
   @override
@@ -102,7 +123,7 @@ class _Profiles extends State<Profiles> {
           title: Text(''),
         ),
         body: ListView(children: <Widget>[
-          //TODO: Show empty message if there are no profiles
+
         ]),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
