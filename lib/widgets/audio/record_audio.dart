@@ -14,6 +14,8 @@ import 'package:Applaudio/styles/theme.dart';
 final lichtGroen = const Color(0xffB4C42D);
 final donkerGroen = const Color(0xff7D8B24);
 
+//final waveGif = new Image(image: new AssetImage("res/images/wave.gif"));
+
 class RecordAudio extends StatefulWidget {
   @override
   _RecordAudioState createState() => new _RecordAudioState();
@@ -29,23 +31,6 @@ class _RecordAudioState extends State<RecordAudio> {
   double _value = 0.0;
 
   static const platform = const MethodChannel('audiorecorder');
-
-    // Get battery level.
-  String _batteryLevel = 'Unknown battery level.';
-
-  Future<void> _getBatteryLevel() async {
-    String batteryLevel;
-    try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
-    } on PlatformException catch (e) {
-      batteryLevel = "Failed to get battery level: '${e.message}'.";
-    }
-
-    setState(() {
-      _batteryLevel = batteryLevel;
-    });
-  }
 
   Future<double> _setWaarde(double waarde) async {
     double result = 0.0;
@@ -77,23 +62,6 @@ class _RecordAudioState extends State<RecordAudio> {
     this.setState(() {
       this._isRecording = false;
     });
-  }
-
-  Widget _buildBatery(){
-    return Material(
-    child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RaisedButton(
-            child: Text('Get Battery Level'),
-            onPressed: _getBatteryLevel,
-          ),
-          Text(_batteryLevel),
-        ],
-      ),
-    ),
-  );
   }
 
   Widget _buildLogo() {
@@ -156,6 +124,13 @@ class _RecordAudioState extends State<RecordAudio> {
             min: 0.0,
             max: 100.0,
           ),
+          Image(
+            image: AssetImage("res/images/wave.gif"),
+
+            /*image: this._isRecording
+                ? AssetImage('res/icons/mic-off.png')
+                : AssetImage('res/images/waveGif.png'),*/
+          ),
         ],
       ),
     );
@@ -197,8 +172,7 @@ class _RecordAudioState extends State<RecordAudio> {
         _buildLogo(),
         _buildVolumeSlider(),
         //_buildRecordingColumn(),
-        _buildButtonRow(),
-        _buildBatery()
+        _buildButtonRow()
       ],
     );
   }

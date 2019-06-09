@@ -17,15 +17,17 @@ Widget _buildSideDrawer(BuildContext context) {
           title: Text('Menu'),
         ),
         ListTile(
-          leading: Icon(Icons.edit),
-          title: Text('Profielen'),
-          onTap: () {},
+          leading: Icon(Icons.list),
+          title: Text('Home'),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/home');
+          },
         ),
         ListTile(
-          leading: Icon(Icons.list),
-          title: Text('Sample'),
+          leading: Icon(Icons.edit),
+          title: Text('Profielen'),
           onTap: () {
-            Navigator.pushReplacementNamed(context, '/sample');
+            Navigator.pushNamed(context, '/profiles');
           },
         ),
       ],
