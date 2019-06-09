@@ -46,7 +46,10 @@ class _Profiles extends State<Profiles> {
           title: Text('Voeg een profiel toe'),
           content: Container(
               child: ListView(
+              shrinkWrap: true,
               children: <Widget>[
+              Text('Voeg hier een profiel toe om deze in het hoofdmenu te gebruiken. Hierdoor heb je altijd snel je instellingen bij de hand.'),
+              SizedBox(height: 15),
               Text('Profiel naam:'),
               TextField(
                 autofocus: true,
@@ -70,11 +73,6 @@ class _Profiles extends State<Profiles> {
                 max: 100.0,
               ),
             ],
-            // mainAxisSize: MainAxisSize.min,
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // children: <Widget>[
-
-            // ],
           )),
           actions: <Widget>[
             FlatButton(
