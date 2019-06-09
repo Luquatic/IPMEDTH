@@ -43,22 +43,22 @@ class _Profiles extends State<Profiles> {
           false, // dialog is dismissible with a tap on the barrier
       builder: (BuildContext context) {
         return AlertDialog(
-          contentPadding: EdgeInsets.all(10),
           title: Text('Voeg een profiel toe'),
           content: Container(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+              child: ListView(
+              children: <Widget>[
+              Text('Profiel naam:'),
               TextField(
                 autofocus: true,
                 decoration: new InputDecoration(
-                    labelText: 'Profiel naam:',
                     hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
                   profileName = value;
                 },
               ),
+              SizedBox(height: 15),
               Text('Volume:'),
+              SizedBox(height: 15),
               FluidSlider(
                 value: _value,
                 onChanged: (double newValue) {
@@ -70,6 +70,11 @@ class _Profiles extends State<Profiles> {
                 max: 100.0,
               ),
             ],
+            // mainAxisSize: MainAxisSize.min,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            // children: <Widget>[
+
+            // ],
           )),
           actions: <Widget>[
             FlatButton(
