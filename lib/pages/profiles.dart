@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 
 class Profiles extends StatefulWidget {
   @override
@@ -35,27 +36,41 @@ class _Profiles extends State<Profiles> {
 
   Future<String> _addProfileDialog(BuildContext context) async {
     String profileName = '';
+    double _value = 0.0;
     return showDialog<String>(
       context: context,
       barrierDismissible:
           false, // dialog is dismissible with a tap on the barrier
       builder: (BuildContext context) {
         return AlertDialog(
+          contentPadding: EdgeInsets.all(10),
           title: Text('Voeg een profiel toe'),
-          content: new Row(
+          content: Container(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Expanded(
-                  child: new TextField(
+              TextField(
                 autofocus: true,
                 decoration: new InputDecoration(
                     labelText: 'Profiel naam:',
-                    hintText: 'Vul hier de naam van het profiel in ...'),
+                    hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
                   profileName = value;
                 },
-              ))
+              ),
+              Text('Volume:'),
+              FluidSlider(
+                value: _value,
+                onChanged: (double newValue) {
+                  setState(() {
+                    _value = newValue;
+                  });
+                },
+                min: 0.0,
+                max: 100.0,
+              ),
             ],
-          ),
+          )),
           actions: <Widget>[
             FlatButton(
               child: Text('Afsluiten'),
@@ -66,6 +81,7 @@ class _Profiles extends State<Profiles> {
             FlatButton(
               child: Text('Opslaan'),
               onPressed: () {
+                //TODO: Save data here
                 Navigator.of(context).pop(profileName);
               },
             ),
