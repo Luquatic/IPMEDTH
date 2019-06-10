@@ -90,6 +90,7 @@ class _RecordAudioState extends State<RecordAudio> {
             onChanged: (double newValue) {
               setState(() {
                 _volume = newValue;
+                _setWaarde(_volume);
               });
             },
             min: 0.0,
