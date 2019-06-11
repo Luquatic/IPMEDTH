@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:Applaudio/themes/applaudio.dart' as Theme; //package for the custom styles
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,16 @@ import './pages/profiles.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
+  
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      // statusBarColor: Colors.white, //top bar color
+      // statusBarIconBrightness: Brightness.dark, //top bar icons
+      systemNavigationBarColor: Colors.black, //bottom bar color
+      systemNavigationBarIconBrightness: Brightness.light, //bottom bar icons
+    )
+  );
+
   runApp(MyApp());
 }
 
