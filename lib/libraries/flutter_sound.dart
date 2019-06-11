@@ -32,41 +32,41 @@ class FlutterSound {
 
   Future<void> _setRecorderCallback() async {
     if (_recorderController == null) {
-      _recorderController = new StreamController.broadcast();
+      _recorderController = StreamController.broadcast();
     }
     if (_dbPeakController == null) {
-      _dbPeakController = new StreamController.broadcast();
+      _dbPeakController = StreamController.broadcast();
     }
 
     _channel.setMethodCallHandler((MethodCall call) {
       switch (call.method) {
         case "updateRecorderProgress":
           Map<String, dynamic> result = json.decode(call.arguments);
-          _recorderController.add(new RecordStatus.fromJSON(result));
+          _recorderController.add(RecordStatus.fromJSON(result));
           break;
         case "updateDbPeakProgress":
           _dbPeakController.add(call.arguments);
           break;
         default:
-          throw new ArgumentError('Unknown method ${call.method} ');
+          throw ArgumentError('Unknown method ${call.method} ');
       }
     });
   }
 
   Future<void> _setPlayerCallback() async {
     if (_playerController == null) {
-      _playerController = new StreamController.broadcast();
+      _playerController = StreamController.broadcast();
     }
 
     _channel.setMethodCallHandler((MethodCall call) {
       switch (call.method) {
         case "updateProgress":
           Map<String, dynamic> result = jsonDecode(call.arguments);
-          _playerController.add(new PlayStatus.fromJSON(result));
+          _playerController.add(PlayStatus.fromJSON(result));
           break;
         case "audioPlayerDidFinishPlaying":
           Map<String, dynamic> result = jsonDecode(call.arguments);
-          PlayStatus status = new PlayStatus.fromJSON(result);
+          PlayStatus status = PlayStatus.fromJSON(result);
           if (status.currentPosition != status.duration) {
             status.currentPosition = status.duration;
           }
@@ -75,7 +75,7 @@ class FlutterSound {
           _removePlayerCallback();
           break;
         default:
-          throw new ArgumentError('Unknown method ${call.method}');
+          throw ArgumentError('Unknown method ${call.method}');
       }
     });
   }
@@ -125,19 +125,19 @@ class FlutterSound {
       });
       _setRecorderCallback();
       if (this._isRecording) {
-        throw new Exception('Recorder is already recording.');
+        throw Exception('Recorder is already recording.');
       }
       this._isRecording = true;
 
       return result;
     } catch (err) {
-      throw new Exception(err);
+      throw Exception(err);
     }
   }
 
   Future<String> stopRecorder() async {
     if (!this._isRecording) {
-      throw new Exception('Recorder already stopped.');
+      throw Exception('Recorder already stopped.');
     }
 
     String result = await _channel.invokeMethod('stopRecorder');

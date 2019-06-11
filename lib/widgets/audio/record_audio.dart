@@ -14,11 +14,11 @@ import 'package:Applaudio/styles/theme.dart';
 final lichtGroen = const Color(0xffB4C42D);
 final donkerGroen = const Color(0xff7D8B24);
 
-//final waveGif = new Image(image: new AssetImage("res/images/wave.gif"));
+//final waveGif = Image(image: AssetImage("res/images/wave.gif"));
 
 class RecordAudio extends StatefulWidget {
   @override
-  _RecordAudioState createState() => new _RecordAudioState();
+  _RecordAudioState createState() => _RecordAudioState();
 }
 
 class _RecordAudioState extends State<RecordAudio> {

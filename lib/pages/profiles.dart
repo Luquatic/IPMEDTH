@@ -12,7 +12,7 @@ class Profiles extends StatefulWidget {
   const Profiles({Key key, this.dataStorage}) : super(key: key);
 
   @override
-  _Profiles createState() => new _Profiles();
+  _Profiles createState() => _Profiles();
 }
 
 class _Profiles extends State<Profiles> {
@@ -65,7 +65,7 @@ class _Profiles extends State<Profiles> {
               TextField(
                 autofocus: true,
                 decoration:
-                    new InputDecoration(hintText: 'Naam van profiel ...'),
+                    InputDecoration(hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
                   this.setState(() {
                     _profileName = value;
@@ -127,7 +127,7 @@ class _Profiles extends State<Profiles> {
         ]),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          backgroundColor: new Color(0xFFB4C42D),
+          backgroundColor: Color(0xFFB4C42D),
           onPressed: () async {
             await _addProfileDialog(context);
           },

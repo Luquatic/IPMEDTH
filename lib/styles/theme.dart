@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-final ThemeData ApplaudioThemeData = new ThemeData(
+final ThemeData ApplaudioThemeData = ThemeData(
     brightness: Brightness.light,
     primarySwatch: MaterialColor(ApplaudioColors.lichtGroen[50].value, ApplaudioColors.lichtGroen),
     primaryColor: ApplaudioColors.lichtGroen[500],
