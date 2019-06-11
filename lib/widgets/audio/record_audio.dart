@@ -7,7 +7,7 @@ import 'package:flutter_sound/flutter_sound.dart';
 
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
-import 'package:Applaudio/styles/theme.dart';
+import 'package:Applaudio/themes/applaudio.dart';
 
 
 

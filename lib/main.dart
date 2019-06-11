@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:Applaudio/styles/theme.dart' as Theme; //package for the custom styles
+import 'package:Applaudio/themes/applaudio.dart' as Theme; //package for the custom styles
 import 'package:flutter/widgets.dart';
 // import 'package:flutter/rendering.dart';
 
