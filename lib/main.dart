@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 // import 'package:flutter/rendering.dart';
 
 import './pages/intro.dart';
+import './pages/tutorial.dart';
 import './pages/home.dart';
 import './pages/profiles.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => IntroPage(),
         '/intro': (BuildContext context) => IntroPage(),
+        '/tutorial': (BuildContext context) => TutorialPage(),
         '/home': (BuildContext context) => HomePage(),
         '/profiles': (BuildContext context) => Profiles(),
       },

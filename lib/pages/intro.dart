@@ -50,7 +50,9 @@ class _IntroPageState extends State<IntroPage> {
               ),
               RaisedButton(
                 child: Text('Volgende'),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/tutorial');
+                },
               )
             ],
           ),
@@ -62,15 +64,14 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     print(_reminder);
-    if (_donotRemind == false) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Applaudio!'),
-        ),
-        body: _buildIntroDialog(),
-      );
-    } else {
-      return HomePage();
-    }
+
+    return _donotRemind == false
+        ? Scaffold(
+            appBar: AppBar(
+              title: Text('Applaudio!'),
+            ),
+            body: _buildIntroDialog(),
+          )
+        : HomePage();
   }
 }
