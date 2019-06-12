@@ -45,29 +45,27 @@ class _Profiles extends State<Profiles> {
   }
 
   Widget _buildProfilesListView(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return Dismissible(
-          direction: DismissDirection.endToStart,
-          background: _onDismissedBackground(),
-          key: Key('K E Y'),
-          onDismissed: (DismissDirection direction) {
-            if (direction == DismissDirection.endToStart) {
-              //delete profile
-            }
-          },
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                title: Text('Profiel'),
-                trailing: _buildEditButton(context, index),
-              ),
-              Divider(),
-            ],
-          ),
-        );
-      }
-    );
+    return ListView.builder(itemBuilder: (BuildContext context, int index) {
+      return Dismissible(
+        direction: DismissDirection.endToStart,
+        background: _onDismissedBackground(),
+        key: Key('K E Y'),
+        onDismissed: (DismissDirection direction) {
+          if (direction == DismissDirection.endToStart) {
+            //delete profile
+          }
+        },
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Text('Profiel'),
+              trailing: _buildEditButton(context, index),
+            ),
+            Divider(),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _onDismissedBackground() {
@@ -171,7 +169,7 @@ class _Profiles extends State<Profiles> {
 
   @override
   Widget build(BuildContext context) {
-    Base<ProfileModel>(
+    return Base<ProfileModel>(
       builder: (context, child, model) => Scaffold(
             drawer: _buildSideDrawer(context),
             appBar: AppBar(
