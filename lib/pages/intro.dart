@@ -42,7 +42,7 @@ class _IntroPageState extends State<IntroPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               RaisedButton(
-                child: Text('Afsluiten'),
+                child: Text('Sluiten'),
                 onPressed: () {
                   _donotRemind = _reminder;
                   Navigator.pushReplacementNamed(context, '/home');
