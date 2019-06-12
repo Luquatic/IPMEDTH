@@ -1,16 +1,15 @@
-import 'dart:io';
 import 'dart:async';
 
+import 'package:Applaudio/enums/view_states.dart';
+import 'package:Applaudio/pages/success_view.dart';
+import 'package:Applaudio/scoped_models/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 
-import 'package:Applaudio/libraries/data_storage.dart';
+import 'base.dart';
+import 'error_view.dart';
 
 class Profiles extends StatefulWidget {
-  final DataStorage dataStorage;
-
-  const Profiles({Key key, this.dataStorage}) : super(key: key);
-
   @override
   _Profiles createState() => _Profiles();
 }
@@ -64,8 +63,7 @@ class _Profiles extends State<Profiles> {
               Text('Profiel naam:'),
               TextField(
                 autofocus: true,
-                decoration:
-                    InputDecoration(hintText: 'Naam van profiel ...'),
+                decoration: InputDecoration(hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
                   this.setState(() {
                     _profileName = value;
@@ -115,22 +113,47 @@ class _Profiles extends State<Profiles> {
     //TODO: check if there are profiles and view them, if there are no profiles show that instead
   }
 
+  Widget _getBodyUi(ViewState state) {
+    switch (state) {
+      case ViewState.Busy:
+        return CircularProgressIndicator();
+      case ViewState.Retrieved:
+      default:
+        return Text('Done');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        drawer: _buildSideDrawer(context),
-        appBar: AppBar(
-          title: Text(''),
-        ),
-        body: ListView(children: <Widget>[
-
-        ]),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: Color(0xFFB4C42D),
-          onPressed: () async {
-            await _addProfileDialog(context);
-          },
-        ));
+    return Base<ProfileModel>(
+      builder: (context, child, model) => Scaffold(
+            drawer: _buildSideDrawer(context),
+            appBar: AppBar(
+              title: Text(''),
+            ),
+            body: ListView(children: <Widget>[
+              _getBodyUi(model.state),
+              Text(model.title),
+            ]),
+            floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.add),
+              backgroundColor: Color(0xFFB4C42D),
+              onPressed: () async {
+                var result = await model.saveData();
+                if (result) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              SuccessView(title: 'Duplicate this text')));
+                } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ErrorView()));
+                }
+                await _addProfileDialog(context);
+              },
+            ),
+          ),
+    );
   }
 }
