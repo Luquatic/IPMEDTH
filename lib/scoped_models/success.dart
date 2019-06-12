@@ -1,5 +1,5 @@
 import 'package:Applaudio/enums/view_states.dart';
-import 'package:Applaudio/scoped_models/base_model.dart';
+import 'package:Applaudio/scoped_models/base.dart';
 
 class SuccessModel extends BaseModel {
   String title = 'no text yet';

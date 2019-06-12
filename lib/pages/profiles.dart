@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import 'package:Applaudio/enums/view_states.dart';
-import 'package:Applaudio/pages/success_view.dart';
-import 'package:Applaudio/scoped_models/profile_model.dart';
+import 'package:Applaudio/pages/success.dart';
+import 'package:Applaudio/scoped_models/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 
 import 'base.dart';
-import 'error_view.dart';
+import 'error.dart';
 
 class Profiles extends StatefulWidget {
   @override
@@ -113,16 +112,6 @@ class _Profiles extends State<Profiles> {
     //TODO: check if there are profiles and view them, if there are no profiles show that instead
   }
 
-  Widget _getBodyUi(ViewState state) {
-    switch (state) {
-      case ViewState.Busy:
-        return CircularProgressIndicator();
-      case ViewState.Retrieved:
-      default:
-        return Text('Done');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Base<ProfileModel>(
@@ -132,7 +121,6 @@ class _Profiles extends State<Profiles> {
               title: Text(''),
             ),
             body: ListView(children: <Widget>[
-              _getBodyUi(model.state),
               Text(model.title),
             ]),
             floatingActionButton: FloatingActionButton(
