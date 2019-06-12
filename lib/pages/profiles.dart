@@ -171,30 +171,13 @@ class _Profiles extends State<Profiles> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Scaffold(
-        drawer: _buildSideDrawer(context),
-        appBar: AppBar(
-          title: Text(''),
-        ),
-        body: _buildProfilesListView(context),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: Color(0xFFB4C42D),
-          onPressed: () async {
-            await _addProfileDialog(context);
-          },
-        ));
-=======
-    return Base<ProfileModel>(
+    Base<ProfileModel>(
       builder: (context, child, model) => Scaffold(
             drawer: _buildSideDrawer(context),
             appBar: AppBar(
               title: Text(''),
             ),
-            body: ListView(children: <Widget>[
-              Text(model.title),
-            ]),
+            body: _buildProfilesListView(context),
             floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               backgroundColor: Color(0xFFB4C42D),
@@ -215,6 +198,5 @@ class _Profiles extends State<Profiles> {
             ),
           ),
     );
->>>>>>> 8a153ee78a0c73924752f2594ed226131e5d9715
   }
 }

@@ -1,6 +1,6 @@
-import 'package:Applaudio/scoped_models/error_model.dart';
-import 'package:Applaudio/scoped_models/profile_model.dart';
-import 'package:Applaudio/scoped_models/success_model.dart';
+import 'package:Applaudio/scoped_models/error.dart';
+import 'package:Applaudio/scoped_models/profile.dart';
+import 'package:Applaudio/scoped_models/success.dart';
 import 'package:Applaudio/services/storage_service.dart';
 import 'package:get_it/get_it.dart';
 
