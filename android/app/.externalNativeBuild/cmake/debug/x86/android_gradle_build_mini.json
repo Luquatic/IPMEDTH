@@ -1,16 +1,29 @@
 {
   "buildFiles": [
+<<<<<<< HEAD
+    "C:\\Users\\ramon\\Desktop\\school\\ipmedth\\Applaudio\\android\\app\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\ramon\\AppData\\Local\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\ramon\\Desktop\\school\\ipmedth\\Applaudio\\android\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
+=======
     "C:\\Development\\Flutter\\IPMEDTH\\android\\app\\CMakeLists.txt"
   ],
   "cleanCommands": [
     "\"C:\\Users\\Jessey Fransen\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe\" --build C:\\Development\\Flutter\\IPMEDTH\\android\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
+>>>>>>> b7d8c1adc90f2898f697e4be563197d749a22d0d
   ],
   "libraries": {
     "native-lib-Debug-x86": {
       "artifactName": "native-lib",
+<<<<<<< HEAD
+      "buildCommand": "C:\\Users\\ramon\\AppData\\Local\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\ramon\\Desktop\\school\\ipmedth\\Applaudio\\android\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native-lib",
+      "abi": "x86",
+      "output": "C:\\Users\\ramon\\Desktop\\school\\ipmedth\\Applaudio\\build\\app\\intermediates\\cmake\\debug\\obj\\x86\\libnative-lib.so"
+=======
       "buildCommand": "\"C:\\Users\\Jessey Fransen\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe\" --build C:\\Development\\Flutter\\IPMEDTH\\android\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native-lib",
       "abi": "x86",
       "output": "C:\\Development\\Flutter\\IPMEDTH\\build\\app\\intermediates\\cmake\\debug\\obj\\x86\\libnative-lib.so"
+>>>>>>> b7d8c1adc90f2898f697e4be563197d749a22d0d
     }
   }
 }

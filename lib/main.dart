@@ -9,10 +9,11 @@ import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
 import './pages/profiles.dart';
+import 'service_locator.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
-  
+  setupLocator();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       // statusBarColor: Colors.white, //top bar color

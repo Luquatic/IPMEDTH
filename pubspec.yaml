@@ -30,6 +30,7 @@ dependencies:
   intl: ^0.15.8
   scoped_model: ^1.0.1
   dots_indicator: ^0.0.5
+  get_it: ^1.0.3
 
 dev_dependencies:
   flutter_test:
