@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 
 import 'package:Applaudio/themes/applaudio.dart' as Theme;
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/widgets.dart';
 
 class TutorialPage extends StatefulWidget {
@@ -42,31 +43,26 @@ class _TutorialPageState extends State<TutorialPage> {
               setState(() => _currentIndexPage = _value);
             },
           ),
-          _buildPositionedDotsDecorator(context),
+          _buildDotsDecorator(context),
         ],
       ),
     );
   }
 
-  Widget _buildPositionedDotsDecorator(BuildContext context) {
-    return Positioned(
-            top: MediaQuery.of(context).size.height * 0.95,
-            // left: MediaQuery.of(context).size.width * 0.35,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.43),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: DotsIndicator(
-                  dotsCount: _pageLength,
-                  position: _currentIndexPage,
-                  decorator: DotsDecorator(
-                    activeColor: Theme.ApplaudioColors.lichtGroen[500],
-                  ),
-                ),
-              ),
-            ),
-          );
+  Widget _buildDotsDecorator(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20.0),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: DotsIndicator(
+          dotsCount: _pageLength,
+          position: _currentIndexPage,
+          decorator: DotsDecorator(
+            activeColor: Theme.ApplaudioColors.lichtGroen[500],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
