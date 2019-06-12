@@ -8,12 +8,12 @@ import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 import 'base.dart';
 import 'error.dart';
 
-class Profiles extends StatefulWidget {
+class ProfileList extends StatefulWidget {
   @override
   _Profiles createState() => _Profiles();
 }
 
-class _Profiles extends State<Profiles> {
+class _Profiles extends State<ProfileList> {
   String _profileName = '';
   double _value = 0.0;
 

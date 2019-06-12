@@ -1,3 +1,4 @@
+import 'package:Applaudio/pages/profile_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,7 +9,7 @@ import 'package:flutter/widgets.dart';
 import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
-import './pages/profiles.dart';
+import './pages/profile_list.dart';
 import 'service_locator.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         '/intro': (BuildContext context) => IntroPage(),
         '/tutorial': (BuildContext context) => TutorialPage(),
         '/home': (BuildContext context) => HomePage(),
-        '/profiles': (BuildContext context) => Profiles(),
+        '/profile_list': (BuildContext context) => ProfileList(),
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
