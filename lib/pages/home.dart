@@ -27,7 +27,7 @@ Widget _buildSideDrawer(BuildContext context) {
           leading: Icon(Icons.edit),
           title: Text('Profielen'),
           onTap: () {
-            Navigator.pushNamed(context, '/profiles');
+            Navigator.popAndPushNamed(context, '/profiles');
           },
         ),
       ],

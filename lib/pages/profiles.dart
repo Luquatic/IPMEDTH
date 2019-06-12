@@ -46,6 +46,63 @@ class _Profiles extends State<Profiles> {
     );
   }
 
+  Widget _buildProfilesListView(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return Dismissible(
+          direction: DismissDirection.endToStart,
+          background: _onDismissedBackground(),
+          key: Key('K E Y'),
+          onDismissed: (DismissDirection direction) {
+            if (direction == DismissDirection.endToStart) {
+              //delete profile
+            }
+          },
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                title: Text('Profiel'),
+                trailing: _buildEditButton(context, index),
+              ),
+              Divider(),
+            ],
+          ),
+        );
+      }
+    );
+  }
+
+  Widget _onDismissedBackground() {
+    return Container(
+      color: Colors.red,
+      padding: EdgeInsets.only(right: 20.0),
+      alignment: Alignment.centerRight,
+      child: Icon(
+        Icons.delete,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildEditButton(BuildContext context, int index) {
+    return IconButton(
+      icon: Icon(Icons.edit),
+      onPressed: () {
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (BuildContext context) {
+        //       return ProductEditPage(
+        //         product: products[index],
+        //         updateProduct: updateProduct,
+        //         productIndex: index,
+        //       );
+        //     },
+        //   ),
+        // );
+      },
+    );
+  }
+
   Future<String> _addProfileDialog(BuildContext context) async {
     return showDialog<String>(
       context: context,
@@ -121,7 +178,7 @@ class _Profiles extends State<Profiles> {
         appBar: AppBar(
           title: Text(''),
         ),
-        body: ListView(children: <Widget>[]),
+        body: _buildProfilesListView(context),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           backgroundColor: Color(0xFFB4C42D),
