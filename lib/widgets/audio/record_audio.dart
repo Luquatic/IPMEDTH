@@ -9,8 +9,6 @@ import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
 import 'package:Applaudio/themes/applaudio.dart';
 
-
-
 final lichtGroen = const Color(0xffB4C42D);
 final donkerGroen = const Color(0xff7D8B24);
 
@@ -74,17 +72,19 @@ class _RecordAudioState extends State<RecordAudio> {
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
     return Container(
-      margin: EdgeInsets.only(top: 20.0,left:10,right:10,bottom: 20),
+      margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
       child: Column(
         children: <Widget>[
-          Align(
-            alignment: Alignment(-0, 0.0),
-            child: Text('Profiel: $profile \n\n'),
+          ListTile(
+            // leading: Icon(Icons.account_circle),
+            title: Text('Profiel'),
+            subtitle: Text('Huidig profiel'),
+            trailing: Icon(Icons.keyboard_arrow_down),
           ),
-          Align(
-            alignment: Alignment(-0, 0.0),
-            child: Text('Volume:$roundVolume\n\n'),
-          ),
+          // Align(
+          //   alignment: Alignment(-0, 0.0),
+          //   child: Text('Volume:$roundVolume\n\n'),
+          // ),
           FluidSlider(
             value: _volume,
             onChanged: (double newValue) {
@@ -95,13 +95,6 @@ class _RecordAudioState extends State<RecordAudio> {
             },
             min: 0.0,
             max: 100.0,
-          ),
-          Image(
-            image: AssetImage("res/images/wave.gif"),
-
-            /*image: this._isRecording
-                ? AssetImage('res/icons/mic-off.png')
-                : AssetImage('res/images/waveGif.png'),*/
           ),
         ],
       ),
@@ -141,10 +134,10 @@ class _RecordAudioState extends State<RecordAudio> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        _buildLogo(),
-        _buildVolumeSlider(),
-        _buildButtonRow()
-      ],
+        _buildLogo(), 
+        _buildVolumeSlider(), 
+        _buildButtonRow(),
+        ],
     );
   }
 }

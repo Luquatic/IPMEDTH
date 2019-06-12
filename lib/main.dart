@@ -40,6 +40,10 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => HomePage(),
         '/profiles': (BuildContext context) => Profiles(),
       },
+      onUnknownRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+            builder: (BuildContext context) => HomePage());
+      },
     );
   }
 }

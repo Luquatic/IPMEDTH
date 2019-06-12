@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Executable : C:\Users\ramon\AppData\Local\Android\sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
 -HC:\Users\ramon\Desktop\school\ipmedth\Applaudio\android\app
@@ -10,6 +11,20 @@ arguments :
 -DCMAKE_CXX_FLAGS=-std=c++14
 -DCMAKE_TOOLCHAIN_FILE=C:\Users\ramon\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
 -DCMAKE_MAKE_PROGRAM=C:\Users\ramon\AppData\Local\Android\sdk\cmake\3.6.4111459\bin\ninja.exe
+=======
+Executable : C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
+arguments : 
+-HC:\Development\Flutter\IPMEDTH\android\app
+-BC:\Development\Flutter\IPMEDTH\android\app\.externalNativeBuild\cmake\debug\x86
+-DANDROID_ABI=x86
+-DANDROID_PLATFORM=android-26
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Development\Flutter\IPMEDTH\build\app\intermediates\cmake\debug\obj\x86
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\ndk-bundle
+-DCMAKE_CXX_FLAGS=-std=c++14
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\ninja.exe
+>>>>>>> b7d8c1adc90f2898f697e4be563197d749a22d0d
 -GAndroid Gradle - Ninja
 jvmArgs : 
 

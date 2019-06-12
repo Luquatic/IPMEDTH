@@ -35,6 +35,13 @@ Widget _buildSideDrawer(BuildContext context) {
   );
 }
 
+Widget _buildVolumeWave() {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20),
+      child: Image.asset('res/images/wave.gif'),
+    );
+  }
+
 class _HomePageButtonState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -54,6 +61,7 @@ class _HomePageButtonState extends State<HomePage> {
         // ],
       ),
       body: RecordAudio(),
+      bottomNavigationBar: _buildVolumeWave(),
       );
   }
   // void choiceAction(String choice) {
