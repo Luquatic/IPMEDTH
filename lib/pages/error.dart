@@ -1,25 +1,18 @@
-import 'package:Applaudio/scoped_models/success_model.dart';
+import 'package:Applaudio/scoped_models/error.dart';
 import 'package:flutter/material.dart';
 
 import 'base.dart';
 
-
-class SuccessView extends StatelessWidget {
-
-  final String title;
-
-  SuccessView({this.title});
-
+class ErrorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Base<SuccessModel>(
-      onModelReady: (model) => model.fetchDuplicatedText(title),
+    return Base<ErrorModel>(
       builder: (context, child, model) => Scaffold(
             appBar: AppBar(
               title: Text(''),
             ),
             body: ListView(children: <Widget>[
-              Center(child:Text(model.title)),
+              Center(child:Text(this.runtimeType.toString())),
             ]),
           ),
     );
