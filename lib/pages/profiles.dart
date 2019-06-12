@@ -64,8 +64,7 @@ class _Profiles extends State<Profiles> {
               Text('Profiel naam:'),
               TextField(
                 autofocus: true,
-                decoration:
-                    InputDecoration(hintText: 'Naam van profiel ...'),
+                decoration: InputDecoration(hintText: 'Naam van profiel ...'),
                 onChanged: (value) {
                   this.setState(() {
                     _profileName = value;
@@ -122,9 +121,7 @@ class _Profiles extends State<Profiles> {
         appBar: AppBar(
           title: Text(''),
         ),
-        body: ListView(children: <Widget>[
-
-        ]),
+        body: ListView(children: <Widget>[]),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           backgroundColor: Color(0xFFB4C42D),
