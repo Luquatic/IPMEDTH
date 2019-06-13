@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           '/intro': (BuildContext context) => IntroPage(),
           '/tutorial': (BuildContext context) => TutorialPage(),
           '/home': (BuildContext context) => HomePage(),
-          '/profile_list': (BuildContext context) => ProfileList(),
+          '/profile_list': (BuildContext context) => ProfileListPage(),
         },
         onUnknownRoute: (RouteSettings settings) {
           return MaterialPageRoute(
