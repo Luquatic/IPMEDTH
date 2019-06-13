@@ -1,10 +1,9 @@
-import 'package:Applaudio/pages/profile_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:Applaudio/themes/applaudio.dart'
     as Theme; //package for the custom styles
-import 'package:flutter/widgets.dart';
+
 import 'package:scoped_model/scoped_model.dart';
 // import 'package:flutter/rendering.dart';
 
@@ -17,7 +16,6 @@ import './scoped_models/profiles.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
-  // setupLocator();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     // statusBarColor: Colors.white, //top bar color
     // statusBarIconBrightness: Brightness.dark, //top bar icons
@@ -28,9 +26,16 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   @override
-  Widget build(context) {
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
     return ScopedModel<ProfilesModel>(
       model: ProfilesModel(),
       child: MaterialApp(
