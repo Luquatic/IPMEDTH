@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:scoped_model/scoped_model.dart';
+import '../models/profile.dart';
+import '../scoped_models/profiles.dart';
+
 import '../widgets/audio/record_audio.dart';
 // import '../widgets/ui_elements/constants.dart';
 
@@ -43,37 +47,26 @@ Widget _buildSideDrawer(BuildContext context) {
 }
 
 Widget _buildVolumeWave() {
-    return Container(
-      padding: EdgeInsets.only(bottom: 20),
-      child: Image.asset('res/images/wave.gif'),
-    );
-  }
+  return Container(
+    padding: EdgeInsets.only(bottom: 20),
+    child: Image.asset('res/images/wave.gif'),
+  );
+}
 
 class _HomePageButtonState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: _buildSideDrawer(context),
-      appBar: AppBar(
-        title: Text(''),
-        // actions: <Widget>[
-        //   PopupMenuButton<String>(itemBuilder: (BuildContext context) {
-        //     return Constants.choices.map((String choice) {
-        //       return PopupMenuItem<String>(
-        //         value: choice,
-        //         child: Text(choice),
-        //       );
-        //     }).toList();
-        //   })
-        // ],
-      ),
-      body: RecordAudio(),
-      bottomNavigationBar: _buildVolumeWave(),
-      );
+    return ScopedModelDescendant<ProfilesModel>(
+      builder: (BuildContext context, Widget child, ProfilesModel model) {
+        return Scaffold(
+          drawer: _buildSideDrawer(context),
+          appBar: AppBar(
+            title: Text(''),
+          ),
+          body: RecordAudio(),
+          bottomNavigationBar: _buildVolumeWave(),
+        );
+      },
+    );
   }
-  // void choiceAction(String choice) {
-  //   if (choice == Constants.Settings) {
-  //     print('Settings');
-  //   }
-  // }
 }

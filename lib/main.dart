@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 
 import 'package:Applaudio/themes/applaudio.dart'
@@ -10,12 +11,14 @@ import 'package:scoped_model/scoped_model.dart';
 import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
+import './pages/profile.dart';
 import './pages/profile_list.dart';
 import './models/profile.dart';
 import './scoped_models/profiles.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
+  prefix0.debugDumpApp();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     // statusBarColor: Colors.white, //top bar color
     // statusBarIconBrightness: Brightness.dark, //top bar icons
@@ -48,6 +51,19 @@ class _MyAppState extends State<MyApp> {
           '/tutorial': (BuildContext context) => TutorialPage(),
           '/home': (BuildContext context) => HomePage(),
           '/profile_list': (BuildContext context) => ProfileListPage(),
+        },
+        onGenerateRoute: (RouteSettings settings) {
+          final List<String> pathElements = settings.name.split('/');
+          if (pathElements[0] != '') {
+            return null;
+          }
+          if (pathElements[1] == 'profile') {
+            final int index = int.parse(pathElements[2]);
+            return MaterialPageRoute<bool>(
+              builder: (BuildContext context) => ProfilePage(index),
+            );
+          }
+          return null;
         },
         onUnknownRoute: (RouteSettings settings) {
           return MaterialPageRoute(
