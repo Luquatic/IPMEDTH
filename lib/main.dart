@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 
 import 'package:Applaudio/themes/applaudio.dart'
@@ -18,7 +17,6 @@ import './scoped_models/profiles.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
-  prefix0.debugDumpApp();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     // statusBarColor: Colors.white, //top bar color
     // statusBarIconBrightness: Brightness.dark, //top bar icons

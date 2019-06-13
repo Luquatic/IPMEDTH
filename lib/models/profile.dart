@@ -4,10 +4,5 @@ class Profile {
   final String title;
   final double volume;
 
-  Profile(
-    {
-      @required this.title,
-      @required this.volume,
-    }
-  );
+  Profile({@required this.title, @required this.volume});
 }

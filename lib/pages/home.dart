@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:scoped_model/scoped_model.dart';
-import '../models/profile.dart';
-import '../scoped_models/profiles.dart';
-
 import '../widgets/audio/record_audio.dart';
 // import '../widgets/ui_elements/constants.dart';
 
@@ -56,17 +52,13 @@ Widget _buildVolumeWave() {
 class _HomePageButtonState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<ProfilesModel>(
-      builder: (BuildContext context, Widget child, ProfilesModel model) {
-        return Scaffold(
-          drawer: _buildSideDrawer(context),
-          appBar: AppBar(
-            title: Text(''),
-          ),
-          body: RecordAudio(),
-          bottomNavigationBar: _buildVolumeWave(),
-        );
-      },
+    return Scaffold(
+      drawer: _buildSideDrawer(context),
+      appBar: AppBar(
+        title: Text(''),
+      ),
+      body: RecordAudio(),
+      bottomNavigationBar: _buildVolumeWave(),
     );
   }
 }
