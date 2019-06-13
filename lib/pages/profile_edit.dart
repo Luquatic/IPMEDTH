@@ -24,11 +24,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget _buildTitleTextField(Profile profile) {
     return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(labelText: 'Title'),
+      decoration: InputDecoration(labelText: 'Titel'),
       initialValue: profile == null ? '' : profile.title,
       validator: (String value) {
         if (value.length < 3) {
-          return 'Title is required';
+          return 'Titel is vereist';
         }
       },
       onSaved: (String value) {
