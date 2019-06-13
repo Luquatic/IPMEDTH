@@ -14,7 +14,6 @@ import './pages/home.dart';
 import './pages/profile_list.dart';
 import './models/profile.dart';
 import './scoped_models/profiles.dart';
-import 'service_locator.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
