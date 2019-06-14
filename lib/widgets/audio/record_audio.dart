@@ -3,16 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'dart:async';
-import 'package:flutter_sound/flutter_sound.dart';
 
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
-import 'package:Applaudio/themes/applaudio.dart';
-
 final lichtGroen = const Color(0xffB4C42D);
 final donkerGroen = const Color(0xff7D8B24);
-
-//final waveGif = Image(image: AssetImage("res/images/wave.gif"));
 
 class RecordAudio extends StatefulWidget {
   @override
