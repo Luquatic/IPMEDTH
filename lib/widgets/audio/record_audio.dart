@@ -62,7 +62,6 @@ class _RecordAudioState extends State<RecordAudio> {
   }
 
   Widget _buildVolumeSlider() {
-    String roundVolume = _volume.toStringAsFixed(1);
     String profile =
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
