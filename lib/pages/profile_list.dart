@@ -1,22 +1,12 @@
-import 'dart:async';
-
-import 'package:Applaudio/pages/success.dart';
-import 'package:Applaudio/scoped_models/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 
-import 'base.dart';
-import 'error.dart';
+import 'package:scoped_model/scoped_model.dart';
+import '../models/profile.dart';
+import '../scoped_models/profiles.dart';
 
-class ProfileList extends StatefulWidget {
-  @override
-  _Profiles createState() => _Profiles();
-}
+import './profile_edit.dart';
 
-class _Profiles extends State<ProfileList> {
-  String _profileName = '';
-  double _value = 0.0;
-
+class ProfileListPage extends StatelessWidget {
   Widget _buildSideDrawer(BuildContext context) {
     return Drawer(
       child: Column(
@@ -44,30 +34,6 @@ class _Profiles extends State<ProfileList> {
     );
   }
 
-  Widget _buildProfilesListView(BuildContext context) {
-    return ListView.builder(itemBuilder: (BuildContext context, int index) {
-      return Dismissible(
-        direction: DismissDirection.endToStart,
-        background: _onDismissedBackground(),
-        key: Key('K E Y'),
-        onDismissed: (DismissDirection direction) {
-          if (direction == DismissDirection.endToStart) {
-            //delete profile
-          }
-        },
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              title: Text('Profiel'),
-              trailing: _buildEditButton(context, index),
-            ),
-            Divider(),
-          ],
-        ),
-      );
-    });
-  }
-
   Widget _onDismissedBackground() {
     return Container(
       color: Colors.red,
@@ -80,121 +46,67 @@ class _Profiles extends State<ProfileList> {
     );
   }
 
-  Widget _buildEditButton(BuildContext context, int index) {
+  Widget _buildEditButton(BuildContext context, int index, ProfilesModel model) {
     return IconButton(
       icon: Icon(Icons.edit),
       onPressed: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (BuildContext context) {
-        //       return ProductEditPage(
-        //         product: products[index],
-        //         updateProduct: updateProduct,
-        //         productIndex: index,
-        //       );
-        //     },
-        //   ),
-        // );
-      },
-    );
-  }
-
-  Future<String> _addProfileDialog(BuildContext context) async {
-    return showDialog<String>(
-      context: context,
-      barrierDismissible:
-          false, // dialog is dismissible with a tap on the barrier
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Voeg een profiel toe'),
-          content: Container(
-              child: ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              Text(
-                  'Voeg hier een profiel toe om deze in het hoofdmenu te gebruiken. Hierdoor heb je altijd snel je instellingen bij de hand.'),
-              SizedBox(height: 15),
-              Text('Profiel naam:'),
-              TextField(
-                autofocus: true,
-                decoration: InputDecoration(hintText: 'Naam van profiel ...'),
-                onChanged: (value) {
-                  this.setState(() {
-                    _profileName = value;
-                  });
-                },
-              ),
-              SizedBox(height: 15),
-              Text('Volume:'),
-              SizedBox(height: 15),
-              FluidSlider(
-                value: _value,
-                onChanged: (double newValue) {
-                  setState(() {
-                    _value = newValue;
-                  });
-                },
-                min: 0.0,
-                max: 100.0,
-              ),
-            ],
-          )),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Afsluiten'),
-              onPressed: () {
-                this.setState(() {
-                  //reset parameters if user closed the box
-                  _profileName = '';
-                  _value = 0.0;
-                });
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Text('Opslaan'),
-              onPressed: () {
-                Navigator.of(context).pop(_profileName);
-              },
-            ),
-          ],
+        model.selectProfile(index);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ProfileEditPage();
+            },
+          ),
         );
       },
     );
   }
 
-  Widget _getProfiles() {
-    //TODO: check if there are profiles and view them, if there are no profiles show that instead
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Base<ProfileModel>(
-      builder: (context, child, model) => Scaffold(
-            drawer: _buildSideDrawer(context),
-            appBar: AppBar(
-              title: Text(''),
-            ),
-            body: _buildProfilesListView(context),
-            floatingActionButton: FloatingActionButton(
+    return ScopedModelDescendant<ProfilesModel>(
+      builder: (BuildContext context, Widget child, ProfilesModel model) {
+        Scaffold(
+          drawer: _buildSideDrawer(context),
+          appBar: AppBar(
+            title: Text('Profielen'),
+          ),
+          body: ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              return Dismissible(
+                direction: DismissDirection.endToStart,
+                background: _onDismissedBackground(),
+                key: Key(model.profiles[index].title),
+                onDismissed: (DismissDirection direction) {
+                  if (direction == DismissDirection.endToStart) {
+                    model.selectProfile(index);
+                    model.deleteProfile();
+                  }
+                },
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: Text(model.profiles[index].title),
+                      trailing: _buildEditButton(context, index, model),
+                    ),
+                    Divider(),
+                  ],
+                ),
+              );
+            },
+          ),
+          floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               backgroundColor: Color(0xFFB4C42D),
-              onPressed: () async {
-                var result = await model.saveData();
-                if (result) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              SuccessView(title: 'Duplicate this text')));
-                } else {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ErrorView()));
-                }
-                await _addProfileDialog(context);
-              },
-            ),
-          ),
+              onPressed: () {
+                // Navigator.of(context).pop(MaterialPageRoute(
+                //   builder: (BuildContext context) {
+                //     return ProfileEditPage();
+                //   },
+                // ),);
+              }),
+        );
+      },
     );
   }
 }

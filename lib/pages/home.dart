@@ -43,11 +43,11 @@ Widget _buildSideDrawer(BuildContext context) {
 }
 
 Widget _buildVolumeWave() {
-    return Container(
-      padding: EdgeInsets.only(bottom: 20),
-      child: Image.asset('res/images/wave.gif'),
-    );
-  }
+  return Container(
+    padding: EdgeInsets.only(bottom: 20),
+    child: Image.asset('res/images/wave.gif'),
+  );
+}
 
 class _HomePageButtonState extends State<HomePage> {
   @override
@@ -56,24 +56,9 @@ class _HomePageButtonState extends State<HomePage> {
       drawer: _buildSideDrawer(context),
       appBar: AppBar(
         title: Text(''),
-        // actions: <Widget>[
-        //   PopupMenuButton<String>(itemBuilder: (BuildContext context) {
-        //     return Constants.choices.map((String choice) {
-        //       return PopupMenuItem<String>(
-        //         value: choice,
-        //         child: Text(choice),
-        //       );
-        //     }).toList();
-        //   })
-        // ],
       ),
       body: RecordAudio(),
       bottomNavigationBar: _buildVolumeWave(),
-      );
+    );
   }
-  // void choiceAction(String choice) {
-  //   if (choice == Constants.Settings) {
-  //     print('Settings');
-  //   }
-  // }
 }
