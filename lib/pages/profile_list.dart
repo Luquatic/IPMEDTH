@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:scoped_model/scoped_model.dart';
-import '../models/profile.dart';
 import '../scoped_models/profiles.dart';
 
 import './profile_edit.dart';
@@ -65,7 +64,7 @@ class ProfileListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<ProfilesModel>(
-      builder: (BuildContext context, Widget child, ProfilesModel model) {
+      builder: (BuildContext context, Widget child, ProfilesModel model) =>
         Scaffold(
           drawer: _buildSideDrawer(context),
           appBar: AppBar(
@@ -86,7 +85,7 @@ class ProfileListPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text(model.profiles[index].title),
+                      title:Text(model.profiles[index].title.length != 0 ? model.profiles[index].title : 'Nog geen profielen aangemaakt.'),
                       trailing: _buildEditButton(context, index, model),
                     ),
                     Divider(),
@@ -105,8 +104,7 @@ class ProfileListPage extends StatelessWidget {
                 //   },
                 // ),);
               }),
-        );
-      },
+        ),
     );
   }
 }
