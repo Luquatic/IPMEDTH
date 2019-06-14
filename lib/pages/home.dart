@@ -16,25 +16,18 @@ Widget _buildSideDrawer(BuildContext context) {
           automaticallyImplyLeading: false,
           title: Text('Menu'),
         ),
-        // ListTile(
-        //   leading: Icon(Icons.list),
-        //   title: Text('Home'),
-        //   onTap: () {
-        //     Navigator.pushReplacementNamed(context, '/home');
-        //   },
-        // ),
         ListTile(
-          leading: Icon(Icons.edit),
+          leading: Icon(Icons.library_add),
           title: Text('Profielen'),
           onTap: () {
             Navigator.popAndPushNamed(context, '/profile_list');
           },
         ),
         ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Instellingen'),
+          leading: Icon(Icons.chrome_reader_mode),
+          title: Text('Help'),
           onTap: () {
-            // Navigator.popAndPushNamed(context, '/instellingen');
+            Navigator.popAndPushNamed(context, '/intro');
           },
         ),
       ],
