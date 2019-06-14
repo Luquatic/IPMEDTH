@@ -1,3 +1,0 @@
-C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/x86/CMakeFiles/native-lib.dir
-C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/x86/CMakeFiles/edit_cache.dir
-C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/dynamicProfile/x86/CMakeFiles/rebuild_cache.dir

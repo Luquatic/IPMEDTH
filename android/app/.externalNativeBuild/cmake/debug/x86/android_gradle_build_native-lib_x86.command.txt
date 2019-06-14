@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 Executable : C:\Users\ramon\AppData\Local\Android\sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
 --build
 C:\Users\ramon\Desktop\school\ipmedth\Applaudio\android\app\.externalNativeBuild\cmake\debug\x86
-=======
-Executable : C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
-arguments : 
---build
-C:\Development\Flutter\IPMEDTH\android\app\.externalNativeBuild\cmake\debug\x86
->>>>>>> b7d8c1adc90f2898f697e4be563197d749a22d0d
 --target
 native-lib
 jvmArgs : 
