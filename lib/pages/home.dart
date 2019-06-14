@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/audio/record_audio.dart';
-// import '../widgets/ui_elements/constants.dart';
 
 class HomePage extends StatefulWidget {
   @override
