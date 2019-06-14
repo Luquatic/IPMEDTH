@@ -29,13 +29,58 @@ class _TutorialPageState extends State<TutorialPage> {
           PageView(
             children: <Widget>[
               Container(
-                color: Colors.white,
+                child: Column( //__Page2__//
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10, top: 40),
+                      child: RaisedButton(
+                        color: Colors.grey.shade300,
+                        child: Text('X'),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/home');
+                          },),
+                    ),
+                    Container(
+                    ),
+                  ],
+                ),
               ),
-              Container(
-                color: Colors.white,
+              Container( //__Page2__//
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10, top: 40),
+                      child: RaisedButton(
+                        color: Colors.grey.shade300,
+                        child: Text('X'),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        },),
+                    ),
+                    Container(
+                    ),
+                  ],
+                ),
               ),
-              Container(
-                color: Colors.white,
+              Container( //__Page3__//
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10, top: 40),
+                      child: RaisedButton(
+                        color: Colors.grey.shade300,
+                        child: Text('X'),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        },),
+                    ),
+                    Container(
+                    ),
+                  ],
+                ),
               ),
             ],
             onPageChanged: (_value) {
