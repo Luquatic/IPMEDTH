@@ -102,29 +102,24 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   }
 
   Widget _buildPageContent(BuildContext context, Profile profile) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profiel toevoegen'),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: Container(
-          margin: EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              // padding: EdgeInsets.symmetric(horizontal:),
-              children: <Widget>[
-                _buildTitleTextField(profile),
-                _buildVolumeTextfield(profile),
-                SizedBox(
-                  height: 10.0,
-                ),
-                _buildSubmitButton(),
-              ],
-            ),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Container(
+        margin: EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            // padding: EdgeInsets.symmetric(horizontal:),
+            children: <Widget>[
+              _buildTitleTextField(profile),
+              _buildVolumeTextfield(profile),
+              SizedBox(
+                height: 10.0,
+              ),
+              _buildSubmitButton(),
+            ],
           ),
         ),
       ),
@@ -138,11 +133,17 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         final Widget pageContent =
             _buildPageContent(context, model.selectedProfile);
         return model.selectedProfileIndex == null
-            ? pageContent
+            ? Scaffold(
+              appBar: AppBar(
+                title: Text('Profiel toevoegen'),
+              ),
+              body: pageContent,
+            )
             : Scaffold(
                 appBar: AppBar(
                   title: Text('Wijzig profiel'),
                 ),
+                body: pageContent,
               );
       },
     );

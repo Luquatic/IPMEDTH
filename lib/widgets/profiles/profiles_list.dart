@@ -19,8 +19,7 @@ class ProfilesList extends StatelessWidget {
     );
   }
 
-  Widget _buildEditButton(
-      BuildContext context, int index, ProfilesModel model) {
+  Widget _buildEditButton(BuildContext context, int index, ProfilesModel model) {
     return IconButton(
       icon: Icon(Icons.edit),
       onPressed: () {
