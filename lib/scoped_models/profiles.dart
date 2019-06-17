@@ -32,20 +32,26 @@ mixin ProfilesModel on Model {
   void addProfile(Profile profile) {
     _profiles.add(profile);
     _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void updateProfile(Profile profile) {
     _profiles[_selectedProfileIndex] = profile;
     _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void deleteProfile() {
     _profiles.removeAt(_selectedProfileIndex);
     _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void selectProfile(int index) {
     _selectedProfileIndex = index;
+    if (index != null) {
+      notifyListeners();
+    }
   }
 
   void toggleProfileFavoriteStatus() {
