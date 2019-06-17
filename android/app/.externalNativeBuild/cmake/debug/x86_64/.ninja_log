@@ -1,5 +1,5 @@
 # ninja log v5
-12	8556	0	CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o	78f515b5f107b384
-2	8865	0	CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o	d6737d1005b7fccf
-7	8910	0	CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o	c3de571b9d0c45fb
-8911	9441	0	C:/Users/ramon/Desktop/school/ipmedth/Applaudio/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	51d8bece4fe0b0d6
+1	790	0	CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o	a9527c1708e8f851
+3	966	0	CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o	7ce169a7e0d9a6ff
+6	986	0	CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o	a99201e2f119241d
+987	1119	0	C:/Development/flutter/IPMEDTH/build/app/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	8ed60ff9a22220cd

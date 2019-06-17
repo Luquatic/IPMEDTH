@@ -21,13 +21,17 @@
 
 extern "C" {
 
-static EchoAudioEngine *audioEngine;
+static EchoAudioEngine *audioEngine = nullptr;
 
 JNIEXPORT void JNICALL
 Java_com_example_first_1app_MainActivity_create(
         JNIEnv *env,
         jclass type) {  //  jobject /* this */
+  if (audioEngine == nullptr) {
     audioEngine = new EchoAudioEngine();
+  }
+
+
 }
 
 JNIEXPORT void JNICALL

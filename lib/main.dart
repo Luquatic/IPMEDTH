@@ -5,13 +5,13 @@ import 'package:Applaudio/themes/applaudio.dart'
     as Theme; //package for the custom styles
 
 import 'package:scoped_model/scoped_model.dart';
+import './scoped_models/profiles.dart';
 
 import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
-import './pages/profile.dart';
-import './pages/profile_list.dart';
-import './scoped_models/profiles.dart';
+import './pages/profiles.dart';
+import './pages/profile_edit.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -46,20 +46,8 @@ class _MyAppState extends State<MyApp> {
           '/intro': (BuildContext context) => IntroPage(),
           '/tutorial': (BuildContext context) => TutorialPage(),
           '/home': (BuildContext context) => HomePage(),
-          '/profile_list': (BuildContext context) => ProfileListPage(),
-        },
-        onGenerateRoute: (RouteSettings settings) {
-          final List<String> pathElements = settings.name.split('/');
-          if (pathElements[0] != '') {
-            return null;
-          }
-          if (pathElements[1] == 'profile') {
-            final int index = int.parse(pathElements[2]);
-            return MaterialPageRoute<bool>(
-              builder: (BuildContext context) => ProfilePage(index),
-            );
-          }
-          return null;
+          '/profiles': (BuildContext context) => ProfilesPage(),
+          'edit': (BuildContext context) => ProfileEditPage(),
         },
         onUnknownRoute: (RouteSettings settings) {
           return MaterialPageRoute(
