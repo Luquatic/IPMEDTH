@@ -1,9 +1,11 @@
+//libraries
 import 'package:flutter/material.dart';
 
+//models
 import 'package:scoped_model/scoped_model.dart';
-import '../../models/profile.dart';
-import '../../scoped_models/profiles.dart';
+import '../../scoped_models/main.dart';
 
+//pages
 import '../../pages/profile_edit.dart';
 
 class ProfilesList extends StatelessWidget {
@@ -19,7 +21,7 @@ class ProfilesList extends StatelessWidget {
     );
   }
 
-  Widget _buildEditButton(BuildContext context, int index, ProfilesModel model) {
+  Widget _buildEditButton(BuildContext context, int index, MainModel model) {
     return IconButton(
       icon: Icon(Icons.edit),
       onPressed: () {
@@ -47,8 +49,8 @@ class ProfilesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<ProfilesModel>(
-        builder: (BuildContext context, Widget child, ProfilesModel model) {
+    return ScopedModelDescendant<MainModel>(
+        builder: (BuildContext context, Widget child, MainModel model) {
       return ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           return Dismissible(

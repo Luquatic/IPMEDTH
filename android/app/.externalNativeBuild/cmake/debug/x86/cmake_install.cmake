@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app
+=======
+# Install script for directory: C:/Development/Flutter/IPMEDTH/android/app
+>>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +44,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/debug/x86/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir
 C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
 C:/Users/ramon/Desktop/school/ipmedth/Applaudio/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+=======
+C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir
+C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
+C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+>>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
