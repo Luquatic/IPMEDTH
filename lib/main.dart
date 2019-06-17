@@ -1,12 +1,16 @@
+//libraries
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+//themes
 import 'package:Applaudio/themes/applaudio.dart'
     as Theme; //package for the custom styles
 
+//models
 import 'package:scoped_model/scoped_model.dart';
-import './scoped_models/profiles.dart';
+import './scoped_models/main.dart';
 
+//pages
 import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
@@ -35,8 +39,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ProfilesModel>(
-      model: ProfilesModel(),
+    return ScopedModel<MainModel>(
+      model: MainModel(),
       child: MaterialApp(
         color: Theme.ApplaudioColors.lichtGroen[500],
         theme: Theme.ApplaudioThemeData,
