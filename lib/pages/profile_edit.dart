@@ -28,7 +28,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       decoration: InputDecoration(labelText: 'Titel'),
       initialValue: profile == null ? '' : profile.title,
       validator: (String value) {
-        if (value.length < 3) {
+        if (value.length < 1) {
           return 'Titel is vereist';
         }
       },
