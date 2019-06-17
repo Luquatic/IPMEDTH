@@ -1,9 +1,11 @@
+//libraries
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+//models
 import 'package:scoped_model/scoped_model.dart';
+import '../scoped_models/main.dart';
 import '../models/profile.dart';
-import '../scoped_models/profiles.dart';
 
 class ProfilePage extends StatelessWidget {
   final int profileIndex;
@@ -28,8 +30,8 @@ class ProfilePage extends StatelessWidget {
     return WillPopScope(onWillPop: () {
       Navigator.pop(context, false);
       return Future.value(false);
-    }, child: ScopedModelDescendant<ProfilesModel>(
-      builder: (BuildContext context, Widget child, ProfilesModel model) {
+    }, child: ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         final Profile product = model.profiles[profileIndex];
         return Scaffold(
           appBar: AppBar(

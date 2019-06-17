@@ -5,13 +5,13 @@ import 'package:Applaudio/themes/applaudio.dart'
     as Theme; //package for the custom styles
 
 import 'package:scoped_model/scoped_model.dart';
+import './scoped_models/main.dart';
 
 import './pages/intro.dart';
 import './pages/tutorial.dart';
 import './pages/home.dart';
 import './pages/profile.dart';
 import './pages/profile_list.dart';
-import './scoped_models/profiles.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -35,8 +35,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ProfilesModel>(
-      model: ProfilesModel(),
+    return ScopedModel<MainModel>(
+      model: MainModel(),
       child: MaterialApp(
         color: Theme.ApplaudioColors.lichtGroen[500],
         theme: Theme.ApplaudioThemeData,

@@ -1,9 +1,10 @@
+//libraries
 import 'package:flutter/material.dart';
-
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
+//models
 import 'package:scoped_model/scoped_model.dart';
-import '../scoped_models/profiles.dart';
+import '../scoped_models/main.dart';
 import '../models/profile.dart';
 
 class ProfileEditPage extends StatefulWidget {
@@ -52,8 +53,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   }
 
   Widget _buildSubmitButton() {
-    return ScopedModelDescendant<ProfilesModel>(
-      builder: (BuildContext context, Widget child, ProfilesModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return RaisedButton(
           child: Text('Opslaan'),
           onPressed: () => _submitForm(model.addProfile, model.updateProfile,
@@ -115,8 +116,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<ProfilesModel>(
-      builder: (BuildContext context, Widget child, ProfilesModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         final Widget pageContent =
             _buildPageContent(context, model.selectedProfile);
         return model.selectedProfileIndex == null

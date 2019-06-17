@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
+//libraries
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-
 import 'dart:async';
-
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
 final lichtGroen = const Color(0xffB4C42D);
