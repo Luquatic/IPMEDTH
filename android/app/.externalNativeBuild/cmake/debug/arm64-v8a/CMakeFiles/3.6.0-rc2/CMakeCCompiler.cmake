@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-set(CMAKE_C_COMPILER "C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
-=======
-set(CMAKE_C_COMPILER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
->>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
+set(CMAKE_C_COMPILER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "Clang")
 set(CMAKE_C_COMPILER_VERSION "8.0")
@@ -17,15 +13,9 @@ set(CMAKE_C_PLATFORM_ID "")
 set(CMAKE_C_SIMULATE_ID "")
 set(CMAKE_C_SIMULATE_VERSION "")
 
-<<<<<<< HEAD
-set(CMAKE_AR "C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ar.exe")
-set(CMAKE_RANLIB "C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ranlib.exe")
-set(CMAKE_LINKER "C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ld.exe")
-=======
-set(CMAKE_AR "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ar.exe")
-set(CMAKE_RANLIB "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ranlib.exe")
-set(CMAKE_LINKER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ld.exe")
->>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
+set(CMAKE_AR "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ar.exe")
+set(CMAKE_RANLIB "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ranlib.exe")
+set(CMAKE_LINKER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android-ld.exe")
 set(CMAKE_COMPILER_IS_GNUCC )
 set(CMAKE_C_COMPILER_LOADED 1)
 set(CMAKE_C_COMPILER_WORKS TRUE)
@@ -73,9 +63,5 @@ endif()
 
 
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "dl;c;dl")
-<<<<<<< HEAD
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.2/lib/linux/aarch64;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/aarch64-linux-android/lib64;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/aarch64-linux-android/lib;C:/Users/ramon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
-=======
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/aarch64;C:/Users/Jessey")
->>>>>>> 908d1aaf24027335ab8897bad4123960658017f4
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/aarch64;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/aarch64-linux-android/lib64;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/aarch64-linux-android/lib;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

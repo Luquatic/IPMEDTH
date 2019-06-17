@@ -18,6 +18,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   final Map<String, dynamic> _formData = {
     'title': null,
     'volume': null,
+    'image': 'res/images/cafe.jpg'
   };
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -92,11 +93,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       addProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
+        image: _formData['image'],
       ));
     } else {
       updateProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
+        image: _formData['image'],
       ));
     }
     Navigator.pushReplacementNamed(context, '/profiles');
