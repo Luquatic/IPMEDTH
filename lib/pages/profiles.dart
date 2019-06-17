@@ -15,8 +15,8 @@ class ProfilesPage extends StatelessWidget {
       child: Icon(Icons.add),
       backgroundColor: Color(0xFFB4C42D),
       onPressed: () {
-        Navigator.popAndPushNamed(context, 'edit')
-            .then((_) => setSelectedProfile(null));
+        setSelectedProfile(null);
+        Navigator.popAndPushNamed(context, 'edit');
       },
     );
   }
