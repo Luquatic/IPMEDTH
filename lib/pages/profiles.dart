@@ -1,5 +1,7 @@
+//libraries
 import 'package:flutter/material.dart';
 
+//widgets
 import '../widgets/profiles/profiles_list.dart';
 
 class ProfilesPage extends StatelessWidget {

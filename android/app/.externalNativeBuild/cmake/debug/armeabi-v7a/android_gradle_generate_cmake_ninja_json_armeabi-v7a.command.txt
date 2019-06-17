@@ -1,15 +1,15 @@
-Executable : C:\Users\Luquatic\Documents\SDK\android\cmake\3.6.4111459\bin\cmake.exe
+Executable : C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--HC:\Development\flutter\IPMEDTH\android\app
--BC:\Development\flutter\IPMEDTH\android\app\.externalNativeBuild\cmake\debug\armeabi-v7a
+-HC:\Development\Flutter\IPMEDTH\android\app
+-BC:\Development\Flutter\IPMEDTH\android\app\.externalNativeBuild\cmake\debug\armeabi-v7a
 -DANDROID_ABI=armeabi-v7a
 -DANDROID_PLATFORM=android-26
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Development\flutter\IPMEDTH\build\app\intermediates\cmake\debug\obj\armeabi-v7a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Development\Flutter\IPMEDTH\build\app\intermediates\cmake\debug\obj\armeabi-v7a
 -DCMAKE_BUILD_TYPE=Debug
--DANDROID_NDK=C:\Users\Luquatic\Documents\SDK\android\ndk-bundle
+-DANDROID_NDK=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\ndk-bundle
 -DCMAKE_CXX_FLAGS=-std=c++14
--DCMAKE_TOOLCHAIN_FILE=C:\Users\Luquatic\Documents\SDK\android\ndk-bundle\build\cmake\android.toolchain.cmake
--DCMAKE_MAKE_PROGRAM=C:\Users\Luquatic\Documents\SDK\android\cmake\3.6.4111459\bin\ninja.exe
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\Jessey Fransen\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\ninja.exe
 -GAndroid Gradle - Ninja
 jvmArgs : 
 

@@ -1,1 +1,4 @@
-ninja: no work to do.
+[1/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o
+[2/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o
+[3/4] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o
+[4/4] Linking CXX shared library C:\Development\Flutter\IPMEDTH\build\app\intermediates\cmake\debug\obj\x86\libnative-lib.so
