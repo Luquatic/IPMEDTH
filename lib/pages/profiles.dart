@@ -27,7 +27,7 @@ class ProfilesPage extends StatelessWidget {
       builder: (BuildContext context, Widget child, MainModel model) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Products'),
+            title: Text('Profielen'),
             actions: <Widget>[
               IconButton(
                 color: Colors.white,

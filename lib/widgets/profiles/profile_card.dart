@@ -79,7 +79,7 @@ class ProfileCard extends StatelessWidget {
         children: <Widget>[
           Image.asset(profile.image),
           _buildTitleContainer(),
-          Text('Volume: ' + profile.toString()),
+          Text('Volume: ' + profile.volume.toString()),
           _buildButtonBar(context),
         ],
       ),
