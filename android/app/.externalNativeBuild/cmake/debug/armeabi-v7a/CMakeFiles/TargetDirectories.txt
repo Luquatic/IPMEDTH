@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/native-lib.dir
 C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
 C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+=======
+C:/Development/flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/native-lib.dir
+C:/Development/flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Development/flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20

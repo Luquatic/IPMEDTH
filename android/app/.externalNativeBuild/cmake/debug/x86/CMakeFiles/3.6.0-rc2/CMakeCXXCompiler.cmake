@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 set(CMAKE_CXX_COMPILER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe")
+=======
+set(CMAKE_CXX_COMPILER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_COMPILER_VERSION "8.0")
@@ -13,9 +17,15 @@ set(CMAKE_CXX_PLATFORM_ID "")
 set(CMAKE_CXX_SIMULATE_ID "")
 set(CMAKE_CXX_SIMULATE_VERSION "")
 
+<<<<<<< HEAD
 set(CMAKE_AR "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ar.exe")
 set(CMAKE_RANLIB "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ranlib.exe")
 set(CMAKE_LINKER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ld.exe")
+=======
+set(CMAKE_AR "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ar.exe")
+set(CMAKE_RANLIB "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ranlib.exe")
+set(CMAKE_LINKER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/i686-linux-android-ld.exe")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_COMPILER_IS_GNUCXX )
 set(CMAKE_CXX_COMPILER_LOADED 1)
 set(CMAKE_CXX_COMPILER_WORKS TRUE)
@@ -64,5 +74,9 @@ endif()
 
 
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "c++;m;dl;c;dl")
+<<<<<<< HEAD
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/i386;C:/Users/Jessey")
+=======
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/i386;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/i686-linux-android/4.9.x;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/i686-linux-android/26;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/i686-linux-android;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/i686-linux-android/lib;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

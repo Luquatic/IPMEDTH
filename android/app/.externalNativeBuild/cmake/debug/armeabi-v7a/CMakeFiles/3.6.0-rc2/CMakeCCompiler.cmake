@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 set(CMAKE_C_COMPILER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
+=======
+set(CMAKE_C_COMPILER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "Clang")
 set(CMAKE_C_COMPILER_VERSION "8.0")
@@ -13,9 +17,15 @@ set(CMAKE_C_PLATFORM_ID "")
 set(CMAKE_C_SIMULATE_ID "")
 set(CMAKE_C_SIMULATE_VERSION "")
 
+<<<<<<< HEAD
 set(CMAKE_AR "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ar.exe")
 set(CMAKE_RANLIB "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ranlib.exe")
 set(CMAKE_LINKER "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ld.exe")
+=======
+set(CMAKE_AR "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ar.exe")
+set(CMAKE_RANLIB "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ranlib.exe")
+set(CMAKE_LINKER "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ld.exe")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_COMPILER_IS_GNUCC )
 set(CMAKE_C_COMPILER_LOADED 1)
 set(CMAKE_C_COMPILER_WORKS TRUE)
@@ -63,5 +73,9 @@ endif()
 
 
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "dl;c;dl")
+<<<<<<< HEAD
 set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/Jessey Fransen/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/arm;C:/Users/Jessey")
+=======
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/8.0.7/lib/linux/arm;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a/thumb;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/arm-linux-androideabi/lib/armv7-a/thumb;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/26;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi;C:/Users/Luquatic/Documents/SDK/android/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
+>>>>>>> 14997ab8ab475716332f378962f368cd6d687a20
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
