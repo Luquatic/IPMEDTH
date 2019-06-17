@@ -1,9 +1,7 @@
-//libraries
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart'; //dots indicator
-import 'package:Applaudio/themes/applaudio.dart' as Theme; //applaudio theme
+import 'package:dots_indicator/dots_indicator.dart';
 
-//widgets
+import 'package:Applaudio/themes/applaudio.dart' as Theme;
 import 'package:flutter/widgets.dart';
 
 class TutorialPage extends StatefulWidget {

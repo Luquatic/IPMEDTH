@@ -1,7 +1,4 @@
-//libraries
 import 'package:flutter/material.dart';
-
-//pages
 import './home.dart';
 
 class IntroPage extends StatefulWidget {

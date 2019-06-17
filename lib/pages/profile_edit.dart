@@ -1,10 +1,9 @@
-//libraries
 import 'package:flutter/material.dart';
+
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
-//models
 import 'package:scoped_model/scoped_model.dart';
-import '../scoped_models/main.dart';
+import '../scoped_models/profiles.dart';
 import '../models/profile.dart';
 
 class ProfileEditPage extends StatefulWidget {
@@ -38,23 +37,41 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-  Widget _buildVolumeFluidsider(Profile profile) {
-    return FluidSlider(
-      value: profile.volume,
-      onChanged: (double value) {
-        setState(() {
-          _formData['volume'] = value;
-          // _setWaarde(_volume);
-        });
+  // Widget _buildVolumeFluidsider(Profile profile) {
+  //   return FluidSlider(
+  //     value: profile.volume,
+  //     onChanged: (double value) {
+  //       setState(() {
+  //         _formData['volume'] = value;
+  //         // _setWaarde(_volume);
+  //       });
+  //     },
+  //     min: 0.0,
+  //     max: 100.0,
+  //   );
+  // }
+
+  Widget _buildVolumeTextfield(Profile profile) {
+    return TextFormField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(labelText: 'Volume'),
+      initialValue: profile == null ? '' : profile.volume.toString(),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Volume is vereist';
+        } else if (!RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
+          return 'Volume moet een getal zijn';
+        }
       },
-      min: 0.0,
-      max: 100.0,
+      onSaved: (String value) {
+        _formData['volume'] = double.parse(value);
+      },
     );
   }
 
   Widget _buildSubmitButton() {
-    return ScopedModelDescendant<MainModel>(
-      builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant<ProfilesModel>(
+      builder: (BuildContext context, Widget child, ProfilesModel model) {
         return RaisedButton(
           child: Text('Opslaan'),
           onPressed: () => _submitForm(model.addProfile, model.updateProfile,
@@ -81,33 +98,28 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         volume: _formData['volume'],
       ));
     }
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/profiles');
   }
 
   Widget _buildPageContent(BuildContext context, Profile profile) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profiel toevoegen'),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: Container(
-          margin: EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              // padding: EdgeInsets.symmetric(horizontal:),
-              children: <Widget>[
-                _buildTitleTextField(profile),
-                _buildVolumeFluidsider(profile),
-                SizedBox(
-                  height: 10.0,
-                ),
-                _buildSubmitButton(),
-              ],
-            ),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Container(
+        margin: EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            // padding: EdgeInsets.symmetric(horizontal:),
+            children: <Widget>[
+              _buildTitleTextField(profile),
+              _buildVolumeTextfield(profile),
+              SizedBox(
+                height: 10.0,
+              ),
+              _buildSubmitButton(),
+            ],
           ),
         ),
       ),
@@ -116,16 +128,22 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<MainModel>(
-      builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant<ProfilesModel>(
+      builder: (BuildContext context, Widget child, ProfilesModel model) {
         final Widget pageContent =
             _buildPageContent(context, model.selectedProfile);
         return model.selectedProfileIndex == null
-            ? pageContent
+            ? Scaffold(
+              appBar: AppBar(
+                title: Text('Profiel toevoegen'),
+              ),
+              body: pageContent,
+            )
             : Scaffold(
                 appBar: AppBar(
                   title: Text('Wijzig profiel'),
                 ),
+                body: pageContent,
               );
       },
     );

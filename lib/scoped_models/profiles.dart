@@ -2,7 +2,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import '../models/profile.dart';
 
-mixin ProfilesModel on Model {
+class ProfilesModel extends Model {
   List<Profile> _profiles = [];
   int _selectedProfileIndex;
 
