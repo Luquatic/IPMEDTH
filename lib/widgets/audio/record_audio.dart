@@ -24,11 +24,6 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
-<<<<<<< HEAD
-=======
-  double _volume = 0.0;  
-
->>>>>>> 832a8b8724fac95ee7abbe8027ba6a0e7156b780
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
@@ -40,7 +35,6 @@ class _RecordAudioState extends State<RecordAudio> {
     String profile =
         'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
-<<<<<<< HEAD
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         if (model.selectedProfileIndex == null) {
@@ -69,26 +63,6 @@ class _RecordAudioState extends State<RecordAudio> {
               // ),
               FluidSlider(
                 value: _volumeSlider,
-=======
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
-      child: Column(
-        children: <Widget>[
-          ListTile(
-            // leading: Icon(Icons.account_circle),
-            title: Text('Profiel'),
-            subtitle: Text('Huidig profiel'),
-            trailing: Icon(Icons.keyboard_arrow_down),
-          ),
-          // Align(
-          //   alignment: Alignment(-0, 0.0),
-          //   child: Text('Volume:$roundVolume\n\n'),
-          // ),
-          ScopedModelDescendant<MainModel>(
-            builder: (BuildContext context, Widget child, MainModel model) {
-              return FluidSlider(
-                value: _volume,
->>>>>>> 832a8b8724fac95ee7abbe8027ba6a0e7156b780
                 onChanged: (double value) {
                   setState(() {
                     _volumeSlider = value;
@@ -155,7 +129,6 @@ class _RecordAudioState extends State<RecordAudio> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         _buildLogo(),
         _buildVolumeSlider(),
