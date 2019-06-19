@@ -50,7 +50,6 @@ class _RecordAudioState extends State<RecordAudio> {
                 onChanged: (double value) {
                   setState(() {
                     _volume = value;
-                    print(_volume);
                     model.setVolumeSliderValue(_volume);
                   });
                 },
