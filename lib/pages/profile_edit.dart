@@ -100,7 +100,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         image: _formData['image'],
       ));
     }
-    Navigator.pushReplacementNamed(context, '/profiles');
+    Navigator.pushNamed(context, '/profiles');
   }
 
   Widget _buildPageContent(BuildContext context, Profile profile) {

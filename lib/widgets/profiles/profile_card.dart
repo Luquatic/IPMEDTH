@@ -15,6 +15,26 @@ class ProfileCard extends StatelessWidget {
 
   ProfileCard(this.profile, this.profileIndex);
 
+  Widget _buildCloseButton() {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.close),
+              color: Colors.red,
+              onPressed: () {
+                model.selectProfile(profileIndex);
+                model.deleteProfile();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget _buildTitleContainer() {
     return Container(
       padding: EdgeInsets.only(top: 10.0),
@@ -43,6 +63,7 @@ class ProfileCard extends StatelessWidget {
         return ButtonBar(
           alignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Edit profile
             IconButton(
               icon: Icon(Icons.edit),
               onPressed: () {
@@ -56,6 +77,7 @@ class ProfileCard extends StatelessWidget {
                 );
               },
             ),
+            //Favorite profile
             IconButton(
               icon: Icon(model.profiles[profileIndex].isFavorite
                   ? Icons.favorite
@@ -77,6 +99,7 @@ class ProfileCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
+          _buildCloseButton(),
           _buildTitleContainer(),
           Text('Volume: ' + profile.volume.toString()),
           _buildButtonBar(context),

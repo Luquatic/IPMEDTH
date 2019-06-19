@@ -16,7 +16,7 @@ class ProfilesPage extends StatelessWidget {
       backgroundColor: Color(0xFFB4C42D),
       onPressed: () {
         setSelectedProfile(null);
-        Navigator.popAndPushNamed(context, 'edit');
+        Navigator.pushNamed(context, 'edit');
       },
     );
   }
@@ -27,6 +27,13 @@ class ProfilesPage extends StatelessWidget {
       builder: (BuildContext context, Widget child, MainModel model) {
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/home');
+              }, 
+            ),
             title: Text('Profielen'),
             actions: <Widget>[
               IconButton(

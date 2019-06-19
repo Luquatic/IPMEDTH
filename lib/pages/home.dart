@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             leading: Icon(Icons.library_add),
             title: Text('Profielen'),
             onTap: () {
-              Navigator.popAndPushNamed(context, '/profiles');
+              Navigator.pushReplacementNamed(context, '/profiles');
             },
           ),
           ListTile(
