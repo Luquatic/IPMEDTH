@@ -39,19 +39,17 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-  // Widget _buildVolumeFluidsider(Profile profile) {
-  //   return FluidSlider(
-  //     value: profile.volume,
-  //     onChanged: (double value) {
-  //       setState(() {
-  //         _formData['volume'] = value;
-  //         // _setWaarde(_volume);
-  //       });
-  //     },
-  //     min: 0.0,
-  //     max: 100.0,
-  //   );
-  // }
+   Widget _buildVolumeSider(Profile profile) {
+     return Slider(
+       activeColor: Colors.indigoAccent,
+       min: 0.0,
+       max: 100.0,
+       onChanged: (volume) {
+         setState(() => _formData['volume'] = volume);
+       },
+       value: _formData['volume'],
+      );
+   }
 
   Widget _buildVolumeTextfield(Profile profile) {
     return TextFormField(
@@ -119,6 +117,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             children: <Widget>[
               _buildTitleTextField(profile),
               _buildVolumeTextfield(profile),
+
+              //_buildVolumeSider(profile), ToDo- fix layout so slider is available
+
               SizedBox(
                 height: 10.0,
               ),
