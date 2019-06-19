@@ -17,8 +17,7 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
-  
-
+  double _volume = 0.0;  
 
   Widget _buildLogo() {
     return Container(
@@ -47,7 +46,6 @@ class _RecordAudioState extends State<RecordAudio> {
           // ),
           ScopedModelDescendant<MainModel>(
             builder: (BuildContext context, Widget child, MainModel model) {
-              double _volume = model.volumeValue;
               return FluidSlider(
                 value: _volume,
                 onChanged: (double value) {
@@ -116,6 +114,7 @@ class _RecordAudioState extends State<RecordAudio> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         _buildLogo(),
         _buildVolumeSlider(),
