@@ -59,6 +59,7 @@ flutter:
   - res/images/logo.png
   - res/images/wave.gif
   - res/images/wave.png
+  - res/images/app_drawer.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
