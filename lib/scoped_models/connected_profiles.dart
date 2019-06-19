@@ -12,21 +12,8 @@ mixin ConnectedProfilesModel on Model {
   int _selectedProfileIndex;
   bool _showFavorites = false;
   bool _isRecording = false;
-  double _volume;
 
   static const _platform = const MethodChannel('audiorecorder');
-
-  setVolumeValue() {
-    if (_selectedProfileIndex == null) {
-      return _volume = 0.0;
-    }
-    _volume = selectedProfile.volume;
-    return _volume;
-  }
-
-  double get volumeValue {
-    return setVolumeValue();
-  }
 
   Profile get selectedProfile {
     if (_selectedProfileIndex == null) {
@@ -116,7 +103,7 @@ mixin RecordAudioModel on ConnectedProfilesModel {
   }
 
   Future<double> setVolumeSliderValue(double value) async {
-    double result = 0.0;
+    double result;
     try {
       result = await ConnectedProfilesModel._platform
           .invokeMethod('setVolumeSliderValue', {"waarde": value});
