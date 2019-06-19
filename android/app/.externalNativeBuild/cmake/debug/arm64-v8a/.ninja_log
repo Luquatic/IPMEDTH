@@ -1,5 +1,0 @@
-# ninja log v5
-12	1316	0	CMakeFiles/native-lib.dir/src/main/cpp/jni_bridge.cpp.o	551b2a3545f6d7d7
-8	1346	0	CMakeFiles/native-lib.dir/src/main/cpp/AudioEffect.cpp.o	9b007948776d5358
-1	1883	0	CMakeFiles/native-lib.dir/src/main/cpp/EchoAudioEngine.cpp.o	ff8dff02c9a8f4e3
-1884	4212	0	C:/Users/ramon/Desktop/school/ipmedth/Applaudio/build/app/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	3b19a05d02e47869
