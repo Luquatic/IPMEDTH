@@ -77,7 +77,6 @@ class ProfileCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.asset(profile.image),
           _buildTitleContainer(),
           Text('Volume: ' + profile.volume.toString()),
           _buildButtonBar(context),
