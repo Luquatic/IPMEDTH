@@ -48,7 +48,7 @@ Java_com_example_first_1app_MainActivity_setEchoOn(JNIEnv *env, jclass type,
 }
 
 JNIEXPORT void JNICALL
-Java_com_example_first_1app_MainActivity_setWaarde(JNIEnv *env, jobject instance,
+Java_com_example_first_1app_MainActivity_setVolumeSliderValue(JNIEnv *env, jobject instance,
                                                    jint sliderwaarde) {
 
   audioEngine->returnAudioEffect()->setSliderWaarde(sliderwaarde);

@@ -22,7 +22,7 @@ public class MainActivity extends FlutterActivity {
   static native void create();
   static native void delete();
   static native void setEchoOn(boolean isEchoOn);
-  public native void setWaarde(int waarde);
+  public native void setVolumeSliderValue(int waarde);
   public native int getWaarde();
   private boolean isPlaying;
 
@@ -46,12 +46,12 @@ public class MainActivity extends FlutterActivity {
     new MethodChannel(getFlutterView(), "audiorecorder").setMethodCallHandler(
             (call, result) -> {
               switch(call.method){
-                case "setWaarde":
+                case "setVolumeSliderValue":
                   double waarde = call.argument("waarde");
-                  setWaarde((int) waarde);
+                  setVolumeSliderValue((int) waarde);
                   break;
-                case "toggleEcho":
-                  toggleEcho();
+                case "toggleAudioRecordingEcho":
+                  toggleAudioRecordingEcho();
                   break;
                 default:
                   result.notImplemented();
@@ -77,7 +77,7 @@ public class MainActivity extends FlutterActivity {
     super.onDestroy();
   }
 
-  public void toggleEcho() {
+  public void toggleAudioRecordingEcho() {
     if (isPlaying) {
       stopEchoing();
     } else {

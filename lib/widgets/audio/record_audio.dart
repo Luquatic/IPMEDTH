@@ -1,8 +1,10 @@
+//libraries
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'dart:async';
+//models
+import 'package:scoped_model/scoped_model.dart';
+import '../../scoped_models/main.dart';
 
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
 
@@ -15,45 +17,6 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
-  bool _isRecording = false;
-
-  //TODO: Adjust eventually the values for the volume slider and replace this for the _dbLevel
-  double _volume = 0.0;
-
-  static const platform = const MethodChannel('audiorecorder');
-
-  Future<double> _setWaarde(double waarde) async {
-    double result = 0.0;
-    try {
-      result = await platform.invokeMethod('setWaarde', {"waarde": waarde});
-    } on PlatformException catch (e) {
-      print(e.message);
-    }
-    return result;
-  }
-
-  Future<void> _toggleEcho() async {
-    try {
-      await platform.invokeMethod('toggleEcho');
-    } on PlatformException catch (e) {
-      print(e.message);
-    }
-  }
-
-  void startRecorder() {
-    _toggleEcho();
-    this.setState(() {
-      this._isRecording = true;
-    });
-  }
-
-  void stopRecorder() {
-    _toggleEcho();
-    this.setState(() {
-      this._isRecording = false;
-    });
-  }
-
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
@@ -79,16 +42,22 @@ class _RecordAudioState extends State<RecordAudio> {
           //   alignment: Alignment(-0, 0.0),
           //   child: Text('Volume:$roundVolume\n\n'),
           // ),
-          FluidSlider(
-            value: _volume,
-            onChanged: (double newValue) {
-              setState(() {
-                _volume = newValue;
-                _setWaarde(_volume);
-              });
+          ScopedModelDescendant<MainModel>(
+            builder: (BuildContext context, Widget child, MainModel model) {
+              double _volume = model.volumeValue;
+              return FluidSlider(
+                value: _volume,
+                onChanged: (double value) {
+                  setState(() {
+                    _volume = value;
+                    print(_volume);
+                    model.setVolumeSliderValue(_volume);
+                  });
+                },
+                min: 0.0,
+                max: 100.0,
+              );
             },
-            min: 0.0,
-            max: 100.0,
           ),
         ],
       ),
@@ -96,41 +65,49 @@ class _RecordAudioState extends State<RecordAudio> {
   }
 
   Widget _buildButtonRow() {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 100.0,
-          height: 100.0,
-          child: ClipOval(
-            child: FlatButton(
-              onPressed: () {
-                if (!this._isRecording) {
-                  return this.startRecorder();
-                }
-                this.stopRecorder();
-              },
-              padding: EdgeInsets.all(8.0),
-              child: Image(
-                image: this._isRecording
-                    ? AssetImage('res/icons/mic-off.png')
-                    : AssetImage('res/icons/mic-on.png'),
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        return Row(
+          children: <Widget>[
+            Container(
+              width: 100.0,
+              height: 100.0,
+              child: ClipOval(
+                child: FlatButton(
+                  onPressed: () {
+                    if (!model.isRecording) {
+                      return model.startRecorder();
+                    }
+                    model.stopRecorder();
+                  },
+                  padding: EdgeInsets.all(8.0),
+                  child: Image(
+                    image: model.isRecording
+                        ? AssetImage('res/icons/mic-off.png')
+                        : AssetImage('res/icons/mic-on.png'),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ],
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+        );
+      },
     );
   }
 
   Widget _buildVolumeWave() {
-    return Container(
-      padding: EdgeInsets.only(bottom: 20),
-      child: Image(
-          image: this._isRecording
-              ? AssetImage('res/images/wave.gif')
-              : AssetImage('res/images/wave.png')),
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        return Container(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Image(
+              image: model.isRecording
+                  ? AssetImage('res/images/wave.gif')
+                  : AssetImage('res/images/wave.png')),
+        );
+      },
     );
   }
 
