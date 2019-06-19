@@ -29,7 +29,7 @@ class _TutorialPageState extends State<TutorialPage> {
           PageView(
             children: <Widget>[
               Container(
-                child: Column( //__Page2__//
+                child: Column( //__Page1__//
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
@@ -78,7 +78,15 @@ class _TutorialPageState extends State<TutorialPage> {
                         },),
                     ),
                     Container(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Image.asset('res/images/app_drawer.png', scale: 7,),
                     ),
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text("Voor het teruglezen van de Handleiding \nkan je deze vinden in het menu."),
+                      
+                    )
                   ],
                 ),
               ),
