@@ -58,7 +58,7 @@ flutter:
   - res/icons/mic-on.png
   - res/images/logo.png
   - res/images/wave.gif
-  - res/images/cafe.jpg
+  - res/images/wave.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

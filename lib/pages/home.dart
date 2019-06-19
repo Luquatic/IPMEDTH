@@ -32,12 +32,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildVolumeWave() {
-    return Container(
-      padding: EdgeInsets.only(bottom: 20),
-      child: Image.asset('res/images/wave.gif'),
-    );
-  }
+
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +41,7 @@ class HomePage extends StatelessWidget {
         title: Text(''),
       ),
       body: RecordAudio(),
-      bottomNavigationBar: _buildVolumeWave(),
+      // bottomNavigationBar: _buildVolumeWave(),
     );
   }
 }

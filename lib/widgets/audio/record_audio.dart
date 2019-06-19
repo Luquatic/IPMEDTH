@@ -124,14 +124,25 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
+  Widget _buildVolumeWave() {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20),
+      child: Image(
+          image: this._isRecording
+              ? AssetImage('res/images/wave.gif')
+              : AssetImage('res/images/wave.png')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        _buildLogo(), 
-        _buildVolumeSlider(), 
+        _buildLogo(),
+        _buildVolumeSlider(),
         _buildButtonRow(),
-        ],
+        _buildVolumeWave(),
+      ],
     );
   }
 }
