@@ -1,3 +1,0 @@
-C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir
-C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
-C:/Development/Flutter/IPMEDTH/android/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir

@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.chrome_reader_mode),
-            title: Text('Help'),
+            title: Text('Handleiding'),
             onTap: () {
               Navigator.popAndPushNamed(context, '/intro');
             },
