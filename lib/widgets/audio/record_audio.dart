@@ -19,7 +19,6 @@ String _profileSubtitle;
 double _volumeSlider = 0.0;
 
 class RecordAudio extends StatefulWidget {
-
   @override
   _RecordAudioState createState() => _RecordAudioState();
 }
@@ -32,42 +31,51 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildSelectProfile(List<Profile> favoriteProfileList){
+  Widget _buildSelectProfile(List<Profile> favoriteProfileList) {
     return ScopedModelDescendant<MainModel>(
-      builder: (BuildContext context, Widget child, MainModel model) {
-        if (model.selectedProfileIndex == null) {
-          _profileTitle = 'Geen profiel geselecteerd';
-          _profileSubtitle = '';
-        } else {
-          _profileTitle = 'Profiel: ';
-          _profileSubtitle = model.selectedProfile.title;
-          _volumeSlider = model.selectedProfile.volume;
-        }
-      if(favoriteProfileList.length > 0){
-          return ExpansionTile(
-            title: Text(_profileTitle),
-            children: favoriteProfileList.map((item) => Text(item.title)).toList(),
-            trailing: Icon(Icons.keyboard_arrow_down),
-          );
-       }else{
-          return ListTile(
-                // leading: Icon(Icons.account_circle),
-                title: Text(_profileTitle),
-                subtitle: Text(_profileSubtitle),
-                trailing: Icon(Icons.keyboard_arrow_down),
-              );
-        }
-      });
+        builder: (BuildContext context, Widget child, MainModel model) {
+      if (model.selectedProfileIndex == null) {
+        _profileTitle = 'Geen profiel geselecteerd';
+        _profileSubtitle = '';
+      } else {
+        _profileTitle = 'Profiel: ';
+        _profileSubtitle = model.selectedProfile.title;
+        _volumeSlider = model.selectedProfile.volume;
+      }
+      if (favoriteProfileList.length > 0) {
+        return ExpansionTile(
+          title: Text('Profiel'),
+          children: favoriteProfileList
+              .map((item) => ListTile(
+                    title: Text(item.title),
+                    onTap: () {
+                      setState(() {
+                        _profileTitle = item.title;
+                        // _profileSubtitle = item.title;
+                        _volumeSlider = item.volume;
+                      });
+                    },
+                  ))
+              .toList(),
+          trailing: Icon(Icons.keyboard_arrow_down),
+        );
+      } else {
+        return ListTile(
+          // leading: Icon(Icons.account_circle),
+          title: Text(_profileTitle),
+          subtitle: Text(_profileSubtitle),
+          trailing: Icon(Icons.keyboard_arrow_down),
+        );
+      }
+    });
   }
 
   Widget _buildVolumeSlider() {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
-
         return Container(
           margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
-          child: 
-            Column(
+          child: Column(
             children: <Widget>[
               SizedBox(
                 height: 60.0,
