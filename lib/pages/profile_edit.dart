@@ -17,10 +17,7 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
-  final Map<String, dynamic> _formData = {
-    'title': null,
-    'volume': null
-  };
+  final Map<String, dynamic> _formData = {'title': null, 'volume': null};
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -44,8 +41,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         //if slider is not changed, pass the actual value
-        _formData['volume'] = _volumeSlider;
-        if (profile != null) _volumeSlider = profile.volume;
+        if (profile != null) {
+          model.setVolumeSliderValue(profile.volume);
+        }
         return FluidSlider(
           value: _volumeSlider,
           onChanged: (double value) {

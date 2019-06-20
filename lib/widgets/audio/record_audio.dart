@@ -32,8 +32,6 @@ class _RecordAudioState extends State<RecordAudio> {
   }
 
   Widget _buildVolumeSlider() {
-    String profile =
-        'Get the acutal profile here'; //TODO: Replace dummy text for variable to load the real profile
 
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
@@ -56,7 +54,7 @@ class _RecordAudioState extends State<RecordAudio> {
                 subtitle: Text(_profileSubtitle),
                 trailing: Icon(Icons.keyboard_arrow_down),
               ),
-              SizedBox(height: 60.0,),
+              SizedBox(height: 60.0),
               // Align(
               //   alignment: Alignment(-0, 0.0),
               //   child: Text('Volume:$roundVolume\n\n'),
