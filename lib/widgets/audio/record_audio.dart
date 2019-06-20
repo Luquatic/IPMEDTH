@@ -43,8 +43,8 @@ class _RecordAudioState extends State<RecordAudio> {
         _volumeSlider = model.selectedProfile.volume;
       }
       if (favoriteProfileList.length > 0) {
+        _profileTitle = 'Profielen';
         return ExpansionTile(
-          title: Text('Profiel'),
           children: favoriteProfileList
               .map((item) => ListTile(
                     title: Text(item.title),
@@ -57,6 +57,7 @@ class _RecordAudioState extends State<RecordAudio> {
                     },
                   ))
               .toList(),
+          title: Text(_profileTitle),
           trailing: Icon(Icons.keyboard_arrow_down),
         );
       } else {
