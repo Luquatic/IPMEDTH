@@ -70,7 +70,6 @@ mixin ProfilesModel on ConnectedProfilesModel {
     final Profile updatedProfile = Profile(
       title: selectedProfile.title,
       volume: selectedProfile.volume,
-      image: selectedProfile.image,
       isFavorite: newFavoriteStatus,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;

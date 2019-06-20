@@ -101,7 +101,7 @@ class ProfileCard extends StatelessWidget {
         children: <Widget>[
           _buildCloseButton(),
           _buildTitleContainer(),
-          Text('Volume: ' + profile.volume.toString()),
+          Text('Volume: ' + profile.volume.toStringAsFixed(2)),
           _buildButtonBar(context),
         ],
       ),

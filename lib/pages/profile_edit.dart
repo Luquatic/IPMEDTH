@@ -19,8 +19,7 @@ class ProfileEditPage extends StatefulWidget {
 class _ProfileEditPageState extends State<ProfileEditPage> {
   final Map<String, dynamic> _formData = {
     'title': null,
-    'volume': null,
-    'image': 'res/images/cafe.jpg'
+    'volume': null
   };
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -44,16 +43,15 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget _buildVolumeSlider(Profile profile) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
-        print(profile);
+        //if slider is not changed, pass the actual value
+        _formData['volume'] = _volumeSlider;
         if (profile != null) _volumeSlider = profile.volume;
         return FluidSlider(
           value: _volumeSlider,
           onChanged: (double value) {
             setState(() {
               _volumeSlider = value;
-              Future<double> newValue = model.setVolumeSliderValue(_volumeSlider);
-              _formData['volume'] = newValue;
-              // WERKT NOG NIET
+              _formData['volume'] = _volumeSlider;
             });
           },
           min: 0.0,
@@ -104,13 +102,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       addProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
-        image: _formData['image'],
       ));
     } else {
       updateProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
-        image: _formData['image'],
       ));
     }
     Navigator.pushNamed(context, '/profiles');
