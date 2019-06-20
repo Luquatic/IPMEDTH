@@ -19,6 +19,7 @@ String _profileSubtitle;
 double _volumeSlider = 0.0;
 
 class RecordAudio extends StatefulWidget {
+
   @override
   _RecordAudioState createState() => _RecordAudioState();
 }
@@ -31,8 +32,7 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildVolumeSlider() {
-
+  Widget _buildSelectProfile(List<Profile> favoriteProfileList){
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         if (model.selectedProfileIndex == null) {
@@ -43,18 +43,35 @@ class _RecordAudioState extends State<RecordAudio> {
           _profileSubtitle = model.selectedProfile.title;
           _volumeSlider = model.selectedProfile.volume;
         }
-
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
-          child: Column(
-            children: <Widget>[
-              ListTile(
+      if(favoriteProfileList.length > 0){
+          return ExpansionTile(
+            title: Text(_profileTitle),
+            children: favoriteProfileList.map((item) => Text(item.title)).toList(),
+            trailing: Icon(Icons.keyboard_arrow_down),
+          );
+       }else{
+          return ListTile(
                 // leading: Icon(Icons.account_circle),
                 title: Text(_profileTitle),
                 subtitle: Text(_profileSubtitle),
                 trailing: Icon(Icons.keyboard_arrow_down),
+              );
+        }
+      });
+  }
+
+  Widget _buildVolumeSlider() {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
+          child: 
+            Column(
+            children: <Widget>[
+              SizedBox(
+                height: 60.0,
               ),
-              SizedBox(height: 60.0),
               // Align(
               //   alignment: Alignment(-0, 0.0),
               //   child: Text('Volume:$roundVolume\n\n'),
@@ -126,13 +143,17 @@ class _RecordAudioState extends State<RecordAudio> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        _buildLogo(),
-        _buildVolumeSlider(),
-        _buildButtonRow(),
-        _buildVolumeWave(),
-      ],
-    );
+    return ScopedModelDescendant<MainModel>(
+        builder: (BuildContext context, Widget child, MainModel model) {
+      return ListView(
+        children: <Widget>[
+          _buildLogo(),
+          _buildSelectProfile(model.displayFavoriteProfiles),
+          _buildVolumeSlider(),
+          _buildButtonRow(),
+          _buildVolumeWave(),
+        ],
+      );
+    });
   }
 }

@@ -35,6 +35,10 @@ mixin ProfilesModel on ConnectedProfilesModel {
     return List.from(_profiles);
   }
 
+  List<Profile> get displayFavoriteProfiles {
+     return _profiles.where((Profile profile) => profile.isFavorite).toList();
+  }
+
   int get selectedProfileIndex {
     return _selectedProfileIndex;
   }
