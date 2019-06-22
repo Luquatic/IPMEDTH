@@ -81,6 +81,23 @@ mixin ProfilesModel on ConnectedProfilesModel {
     _selectedProfileIndex = null;
   }
 
+  void toggleProfilesInactiveStatus() {
+     for(var i = 0; i<_profiles.length; i++) {
+      _profiles[i].isActive = false;
+    }
+  }
+
+  void toggleProfileActiveStatus() {
+    final Profile updatedProfile = Profile(
+      title: selectedProfile.title,
+      volume: selectedProfile.volume,
+      isActive: true,
+    );
+    _profiles[_selectedProfileIndex] = updatedProfile;
+    notifyListeners();
+    _selectedProfileIndex = null;
+  }
+
   void toggleDisplayMode() {
     _showFavorites = !_showFavorites;
     notifyListeners();
