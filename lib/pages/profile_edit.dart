@@ -44,6 +44,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         if (profile != null) {
           model.setVolumeSliderValue(profile.volume);
         }
+        if(profile == null){
+          _formData['volume'] = _volumeSlider;
+        }
         return FluidSlider(
           value: _volumeSlider,
           onChanged: (double value) {
