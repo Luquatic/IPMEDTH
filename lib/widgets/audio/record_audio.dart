@@ -1,5 +1,4 @@
 //libraries
-import 'package:Applaudio/scoped_models/connected_profiles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,16 +30,16 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildSelectProfile(List<Profile> favoriteProfileList) {
+  Widget _buildSelectProfile(List<Profile> activeProfileList, favoriteProfileList) {
     return ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
-      if (model.selectedProfileIndex == null) {
+      if (activeProfileList.length < 1) {
         _profileTitle = 'Geen profiel geselecteerd';
         _profileSubtitle = '';
       } else {
         _profileTitle = 'Profiel: ';
-        _profileSubtitle = model.selectedProfile.title;
-        _volumeSlider = model.selectedProfile.volume;
+        _profileSubtitle = activeProfileList[0].title;
+        _volumeSlider = activeProfileList[0].volume;
       }
       if (favoriteProfileList.length > 0) {
         _profileTitle = 'Profielen';
@@ -157,7 +156,7 @@ class _RecordAudioState extends State<RecordAudio> {
       return ListView(
         children: <Widget>[
           _buildLogo(),
-          _buildSelectProfile(model.displayFavoriteProfiles),
+          _buildSelectProfile(model.displayActiveProfile, model.displayFavoriteProfiles),
           _buildVolumeSlider(),
           _buildButtonRow(),
           _buildVolumeWave(),
