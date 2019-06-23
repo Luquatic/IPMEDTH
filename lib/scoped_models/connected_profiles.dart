@@ -78,8 +78,8 @@ mixin ProfilesModel on ConnectedProfilesModel {
       isActive: selectedProfile.isActive,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;
-    notifyListeners();
     _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void toggleProfilesInactiveStatus() {
@@ -96,8 +96,8 @@ mixin ProfilesModel on ConnectedProfilesModel {
       isActive: true,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;
-    notifyListeners();
     _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void toggleDisplayMode() {
