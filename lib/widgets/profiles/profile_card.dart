@@ -27,6 +27,11 @@ class ProfileCard extends StatelessWidget {
               onPressed: () {
                 model.selectProfile(profileIndex);
                 model.deleteProfile();
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Profiel verwijderd'),
+                  ),
+                );
               },
             ),
           ],
@@ -97,37 +102,37 @@ class ProfileCard extends StatelessWidget {
   Widget _buildIsActiveButton(BuildContext context) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
-        if(model.profiles[profileIndex].isActive) {
+        if (model.profiles[profileIndex].isActive) {
           return Center(
-          child: OutlineButton(
-            color: Colors.white,
-            borderSide: BorderSide(width: 2.0, color: Theme.of(context).primaryColor),
-            child: (Text(
-              'Actief',
-              style: TextStyle(color: Theme.of(context).primaryColor),
-            )),
-            onPressed: () {
-              // Do nothing
-            },
-          ),
-        );
+            child: OutlineButton(
+              color: Colors.white,
+              borderSide:
+                  BorderSide(width: 2.0, color: Theme.of(context).primaryColor),
+              child: (Text(
+                'Actief',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              )),
+              onPressed: () {
+                // Do nothing
+              },
+            ),
+          );
         } else {
           return Center(
-          child: RaisedButton(
-            color: Theme.of(context).primaryColor,
-            child: (Text(
-              'Activeren',
-              style: TextStyle(color: Colors.white),
-            )),
-            onPressed: () {
-              model.toggleProfilesInactiveStatus();
-              model.selectProfile(profileIndex);
-              model.toggleProfileActiveStatus();
-            },
-          ),
-        );
+            child: RaisedButton(
+              color: Theme.of(context).primaryColor,
+              child: (Text(
+                'Activeren',
+                style: TextStyle(color: Colors.white),
+              )),
+              onPressed: () {
+                model.toggleProfilesInactiveStatus();
+                model.selectProfile(profileIndex);
+                model.toggleProfileActiveStatus();
+              },
+            ),
+          );
         }
-        
       },
     );
   }
