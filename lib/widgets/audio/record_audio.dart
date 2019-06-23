@@ -38,17 +38,20 @@ class _RecordAudioState extends State<RecordAudio> {
         _profileTitle = 'Geen profiel geselecteerd';
         _profileSubtitle = '';
       } else {
-        _profileTitle = 'Profiel: ';
+        _profileTitle = 'Actief profiel: ';
         _profileSubtitle = activeProfileList[0].title;
         _volumeSlider = activeProfileList[0].volume;
       }
       if (favoriteProfileList.length > 0) {
+        if(activeProfileList.length > 0){
+        _profileTitle = 'Actief profiel: ' + activeProfileList[0].title;
+        _profileSubtitle = activeProfileList[0].title;
+        _volumeSlider = activeProfileList[0].volume;
+        }
         return ExpansionTile(
           children: favoriteProfileList
               .map((item) => ListTile(
-                    title: Text(item.title.length > 0
-                        ? _profileTitle = item.title
-                        : _profileTitle = 'Profiel: '),
+                    title: Text(item.title),
                     onTap: () {
                       model.toggleProfilesInactiveStatus();
                       setState(() {
@@ -65,9 +68,7 @@ class _RecordAudioState extends State<RecordAudio> {
       }
       return ListTile(
         // leading: Icon(Icons.account_circle),
-        title: Text(_profileTitle),
-        subtitle: Text(_profileSubtitle),
-        trailing: Icon(Icons.keyboard_arrow_down),
+        title: Text('$_profileTitle$_profileSubtitle'),
       );
     });
   }
