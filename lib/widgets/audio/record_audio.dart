@@ -1,4 +1,6 @@
 //libraries
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +25,21 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
+   int _key;
+
+      _collapse() {
+        int newKey;
+        do {
+          _key = new Random().nextInt(10000);
+        } while(newKey == _key);
+      }
+
+      @override
+      void initState() {
+        super.initState();
+        _collapse();
+      }
+
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
@@ -43,12 +60,14 @@ class _RecordAudioState extends State<RecordAudio> {
         _volumeSlider = activeProfileList[0].volume;
       }
       if (favoriteProfileList.length > 0) {
-        if(activeProfileList.length > 0){
-        _profileTitle = 'Actief profiel: ' + activeProfileList[0].title;
-        _profileSubtitle = activeProfileList[0].title;
-        _volumeSlider = activeProfileList[0].volume;
+        if (activeProfileList.length > 0) {
+          _profileTitle = 'Actief profiel: ' + activeProfileList[0].title;
+          _profileSubtitle = activeProfileList[0].title;
+          _volumeSlider = activeProfileList[0].volume;
         }
         return ExpansionTile(
+          key: Key(_key.toString()),
+          initiallyExpanded: false,
           children: favoriteProfileList
               .map((item) => ListTile(
                     title: Text(item.title),
@@ -59,6 +78,7 @@ class _RecordAudioState extends State<RecordAudio> {
                         _volumeSlider = item.volume;
                         item.isActive = true;
                       });
+                       _collapse();
                     },
                   ))
               .toList(),

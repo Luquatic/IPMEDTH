@@ -12,6 +12,7 @@ mixin ConnectedProfilesModel on Model {
   int _selectedProfileIndex;
   bool _showFavorites = false;
   bool _isRecording = false;
+  int _collapseKey;
 
   static const _platform = const MethodChannel('audiorecorder');
 
