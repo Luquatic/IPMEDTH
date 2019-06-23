@@ -75,6 +75,7 @@ mixin ProfilesModel on ConnectedProfilesModel {
       title: selectedProfile.title,
       volume: selectedProfile.volume,
       isFavorite: newFavoriteStatus,
+      isActive: selectedProfile.isActive,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;
     notifyListeners();
@@ -91,6 +92,7 @@ mixin ProfilesModel on ConnectedProfilesModel {
     final Profile updatedProfile = Profile(
       title: selectedProfile.title,
       volume: selectedProfile.volume,
+      isFavorite: selectedProfile.isFavorite,
       isActive: true,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;
