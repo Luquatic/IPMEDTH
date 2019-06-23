@@ -42,7 +42,16 @@ class _TutorialPageState extends State<TutorialPage> {
                           },),
                     ),
                     Container(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Image.asset('res/images/app_drawer.png', scale: 7,),
                     ),
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text("Voor het teruglezen van de handleiding \nkan je deze terugvinden in het menu.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),),
+                    )
                   ],
                 ),
               ),
@@ -60,7 +69,17 @@ class _TutorialPageState extends State<TutorialPage> {
                         },),
                     ),
                     Container(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Image.asset('res/images/app_drawer.png', scale: 7,),
                     ),
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text("Voor het teruglezen van de handleiding \nkan je deze terugvinden in het menu.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),),
+
+                    )
                   ],
                 ),
               ),
@@ -84,10 +103,10 @@ class _TutorialPageState extends State<TutorialPage> {
                     Container(
                       alignment: Alignment.bottomCenter,
                       padding: EdgeInsets.only(top: 10),
-                      child: Text("Voor het teruglezen van de Handleiding \nkan je deze vinden in het menu.",
+                      child: Text("Voor het teruglezen van de handleiding \nkan je deze terugvinden in het menu.",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20),),
-                      
+
                     )
                   ],
                 ),
