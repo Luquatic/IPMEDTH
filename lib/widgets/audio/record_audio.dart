@@ -30,7 +30,7 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildSelectProfile(List<Profile> activeProfileList, favoriteProfileList) {
+  Widget _buildSelectProfile(List<Profile> activeProfileList, List<Profile>favoriteProfileList) {
     return ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
       if (activeProfileList.length < 1) {
