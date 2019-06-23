@@ -7,6 +7,8 @@ import 'package:scoped_model/scoped_model.dart';
 import '../scoped_models/main.dart';
 import '../models/profile.dart';
 
+double _volumeSlider = 0.0;
+
 class ProfileEditPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -15,11 +17,7 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
-  final Map<String, dynamic> _formData = {
-    'title': null,
-    'volume': null,
-    'image': 'res/images/cafe.jpg'
-  };
+  final Map<String, dynamic> _formData = {'title': null, 'volume': null};
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -39,40 +37,51 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-   Widget _buildVolumeSider(Profile profile) {
-     return Slider(
-       activeColor: Colors.indigoAccent,
-       min: 0.0,
-       max: 100.0,
-       onChanged: (volume) {
-         setState(() => _formData['volume'] = volume);
-       },
-       value: _formData['volume'],
-      );
-   }
-
-  Widget _buildVolumeTextfield(Profile profile) {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(labelText: 'Volume'),
-      initialValue: profile == null ? '' : profile.volume.toString(),
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Volume is vereist';
-        } else if (!RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
-          return 'Volume moet een getal zijn';
+  Widget _buildVolumeSlider(Profile profile) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        //if slider is not changed, pass the actual value
+        if (profile != null) {
+          model.setVolumeSliderValue(profile.volume);
         }
-      },
-      onSaved: (String value) {
-        _formData['volume'] = double.parse(value);
+        return FluidSlider(
+          value: _volumeSlider,
+          onChanged: (double value) {
+            setState(() {
+              _volumeSlider = value;
+              _formData['volume'] = _volumeSlider;
+            });
+          },
+          min: 0.0,
+          max: 100.0,
+        );
       },
     );
   }
+
+  // Widget _buildVolumeTextfield(Profile profile) {
+  //   return TextFormField(
+  //     keyboardType: TextInputType.number,
+  //     decoration: InputDecoration(labelText: 'Volume'),
+  //     initialValue: profile == null ? '' : profile.volume.toString(),
+  //     validator: (int value) {
+  //       if (value.isEmpty || value <= 0 || value >= 100) {
+  //         return 'Volume is vereist';
+  //       } else if (!RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
+  //         return 'Volume moet een getal zijn';
+  //       }
+  //     },
+  //     onSaved: (String value) {
+  //       _formData['volume'] = double.parse(value);
+  //     },
+  //   );
+  // }
 
   Widget _buildSubmitButton() {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return RaisedButton(
+          // color: Theme.of(context).primaryColor,
           child: Text('Opslaan'),
           onPressed: () => _submitForm(model.addProfile, model.updateProfile,
               model.selectedProfileIndex),
@@ -91,13 +100,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       addProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
-        image: _formData['image'],
       ));
     } else {
       updateProfile(Profile(
         title: _formData['title'],
         volume: _formData['volume'],
-        image: _formData['image'],
       ));
     }
     Navigator.pushNamed(context, '/profiles');
@@ -116,12 +123,15 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             // padding: EdgeInsets.symmetric(horizontal:),
             children: <Widget>[
               _buildTitleTextField(profile),
-              _buildVolumeTextfield(profile),
+              SizedBox(
+                height: 70.0,
+              ),
+              _buildVolumeSlider(profile),
 
               //_buildVolumeSider(profile), ToDo- fix layout so slider is available
 
               SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
               _buildSubmitButton(),
             ],
@@ -139,11 +149,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             _buildPageContent(context, model.selectedProfile);
         return model.selectedProfileIndex == null
             ? Scaffold(
-              appBar: AppBar(
-                title: Text('Profiel toevoegen'),
-              ),
-              body: pageContent,
-            )
+                appBar: AppBar(
+                  title: Text('Profiel toevoegen'),
+                ),
+                body: pageContent,
+              )
             : Scaffold(
                 appBar: AppBar(
                   title: Text('Wijzig profiel'),

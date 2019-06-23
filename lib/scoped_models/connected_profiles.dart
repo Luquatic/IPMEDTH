@@ -12,21 +12,8 @@ mixin ConnectedProfilesModel on Model {
   int _selectedProfileIndex;
   bool _showFavorites = false;
   bool _isRecording = false;
-  double _volume;
 
   static const _platform = const MethodChannel('audiorecorder');
-
-  setVolumeValue() {
-    if (_selectedProfileIndex == null) {
-      return _volume = 0.0;
-    }
-    _volume = selectedProfile.volume;
-    return _volume;
-  }
-
-  double get volumeValue {
-    return setVolumeValue();
-  }
 
   Profile get selectedProfile {
     if (_selectedProfileIndex == null) {
@@ -46,6 +33,14 @@ mixin ProfilesModel on ConnectedProfilesModel {
       return _profiles.where((Profile profile) => profile.isFavorite).toList();
     }
     return List.from(_profiles);
+  }
+
+  List<Profile> get displayFavoriteProfiles {
+     return _profiles.where((Profile profile) => profile.isFavorite).toList();
+  }
+
+  List<Profile> get displayActiveProfile {
+     return _profiles.where((Profile profile) => profile.isActive).toList();
   }
 
   int get selectedProfileIndex {
@@ -83,12 +78,30 @@ mixin ProfilesModel on ConnectedProfilesModel {
     final Profile updatedProfile = Profile(
       title: selectedProfile.title,
       volume: selectedProfile.volume,
-      image: selectedProfile.image,
       isFavorite: newFavoriteStatus,
+      isActive: selectedProfile.isActive,
     );
     _profiles[_selectedProfileIndex] = updatedProfile;
-    notifyListeners();
     _selectedProfileIndex = null;
+    notifyListeners();
+  }
+
+  void toggleProfilesInactiveStatus() {
+     for(var i = 0; i<_profiles.length; i++) {
+      _profiles[i].isActive = false;
+    }
+  }
+
+  void toggleProfileActiveStatus() {
+    final Profile updatedProfile = Profile(
+      title: selectedProfile.title,
+      volume: selectedProfile.volume,
+      isFavorite: selectedProfile.isFavorite,
+      isActive: true,
+    );
+    _profiles[_selectedProfileIndex] = updatedProfile;
+    _selectedProfileIndex = null;
+    notifyListeners();
   }
 
   void toggleDisplayMode() {
@@ -116,7 +129,7 @@ mixin RecordAudioModel on ConnectedProfilesModel {
   }
 
   Future<double> setVolumeSliderValue(double value) async {
-    double result = 0.0;
+    double result;
     try {
       result = await ConnectedProfilesModel._platform
           .invokeMethod('setVolumeSliderValue', {"waarde": value});

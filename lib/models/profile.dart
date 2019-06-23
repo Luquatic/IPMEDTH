@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Profile {
   final String title;
   final double volume;
-  final String image;
   final bool isFavorite;
+  bool isActive;
 
-  Profile({@required this.title, @required this.volume, @required this.image, this.isFavorite = false});
+  Profile({@required this.title, @required this.volume, this.isFavorite = false, this.isActive = false});
 }

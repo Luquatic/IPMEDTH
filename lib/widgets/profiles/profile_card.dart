@@ -27,6 +27,11 @@ class ProfileCard extends StatelessWidget {
               onPressed: () {
                 model.selectProfile(profileIndex);
                 model.deleteProfile();
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Profiel verwijderd'),
+                  ),
+                );
               },
             ),
           ],
@@ -57,7 +62,7 @@ class ProfileCard extends StatelessWidget {
     );
   }
 
-  Widget _buildButtonBar(BuildContext context) {
+  Widget _buildIconBar(BuildContext context) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return ButtonBar(
@@ -94,6 +99,44 @@ class ProfileCard extends StatelessWidget {
     );
   }
 
+  Widget _buildIsActiveButton(BuildContext context) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        if (model.profiles[profileIndex].isActive) {
+          return Center(
+            child: OutlineButton(
+              color: Colors.white,
+              borderSide:
+                  BorderSide(width: 2.0, color: Theme.of(context).primaryColor),
+              child: (Text(
+                'Actief',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              )),
+              onPressed: () {
+                // Do nothing
+              },
+            ),
+          );
+        } else {
+          return Center(
+            child: RaisedButton(
+              color: Theme.of(context).primaryColor,
+              child: (Text(
+                'Activeren',
+                style: TextStyle(color: Colors.white),
+              )),
+              onPressed: () {
+                model.toggleProfilesInactiveStatus();
+                model.selectProfile(profileIndex);
+                model.toggleProfileActiveStatus();
+              },
+            ),
+          );
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -101,8 +144,12 @@ class ProfileCard extends StatelessWidget {
         children: <Widget>[
           _buildCloseButton(),
           _buildTitleContainer(),
-          Text('Volume: ' + profile.volume.toString()),
-          _buildButtonBar(context),
+          Text('Volume: ' + profile.volume.toStringAsFixed(0)),
+          _buildIconBar(context),
+          _buildIsActiveButton(context),
+          SizedBox(
+            height: 20.0,
+          ),
         ],
       ),
     );
