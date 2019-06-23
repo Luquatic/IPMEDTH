@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             leading: Icon(Icons.chrome_reader_mode),
             title: Text('Handleiding'),
             onTap: () {
-              Navigator.popAndPushNamed(context, '/intro');
+              Navigator.pushReplacementNamed(context, '/tutorial');
             },
           ),
         ],

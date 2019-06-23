@@ -24,70 +24,41 @@ class _TutorialPageState extends State<TutorialPage> {
 
   Widget _buildPageContent(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/home');
+          },
+        ),
+        title: Text('Handleiding'),
+      ),
       body: Stack(
         children: <Widget>[
           PageView(
             children: <Widget>[
+              Container(), // Page 1
+              Container(), // Page 2
               Container(
-                child: Column( //__Page1__//
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 10, top: 40),
-                      child: RaisedButton(
-                        color: Colors.grey.shade300,
-                        child: Text('X'),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/home');
-                          },),
-                    ),
-                    Container(
-                    ),
-                  ],
-                ),
-              ),
-              Container( //__Page2__//
+                //__Page3__//
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: 10, top: 40),
-                      child: RaisedButton(
-                        color: Colors.grey.shade300,
-                        child: Text('X'),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/home');
-                        },),
+                      child: Image.asset(
+                        'res/images/app_drawer.png',
+                        scale: 7,
+                      ),
                     ),
                     Container(
-                    ),
-                  ],
-                ),
-              ),
-              Container( //__Page3__//
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 10, top: 40),
-                      child: RaisedButton(
-                        color: Colors.grey.shade300,
-                        child: Text('X'),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/home');
-                        },),
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Image.asset('res/images/app_drawer.png', scale: 7,),
-                    ),
-                    Container(
-                      alignment: Alignment.bottomCenter,
                       padding: EdgeInsets.only(top: 10),
-                      child: Text("Voor het teruglezen van de Handleiding \nkan je deze vinden in het menu.",
+                      child: Text(
+                        "De handleiding is terug te vinden in het menu.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20),),
-                      
+                        style: TextStyle(fontSize: 20),
+                      ),
                     )
                   ],
                 ),
