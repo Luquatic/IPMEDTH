@@ -113,7 +113,7 @@ class ProfileCard extends StatelessWidget {
                 style: TextStyle(color: Theme.of(context).primaryColor),
               )),
               onPressed: () {
-                // Do nothing
+                //do nothing
               },
             ),
           );
