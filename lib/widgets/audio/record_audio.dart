@@ -1,4 +1,6 @@
 //libraries
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +25,21 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
+   int _key;
+
+      _collapse() {
+        int newKey;
+        do {
+          _key = new Random().nextInt(10000);
+        } while(newKey == _key);
+      }
+
+      @override
+      void initState() {
+        super.initState();
+        _collapse();
+      }
+
   Widget _buildLogo() {
     return Container(
       margin: EdgeInsets.only(top: 24.0, left: 15),
@@ -30,43 +47,49 @@ class _RecordAudioState extends State<RecordAudio> {
     );
   }
 
-  Widget _buildSelectProfile(List<Profile> activeProfileList, favoriteProfileList) {
+  Widget _buildSelectProfile(
+      List<Profile> activeProfileList, List<Profile> favoriteProfileList) {
     return ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
       if (activeProfileList.length < 1) {
         _profileTitle = 'Geen profiel geselecteerd';
         _profileSubtitle = '';
       } else {
-        _profileTitle = 'Profiel: ';
+        _profileTitle = 'Actief profiel: ';
         _profileSubtitle = activeProfileList[0].title;
         _volumeSlider = activeProfileList[0].volume;
       }
       if (favoriteProfileList.length > 0) {
-        _profileTitle = 'Profielen';
+        if (activeProfileList.length > 0) {
+          _profileTitle = 'Actief profiel: ' + activeProfileList[0].title;
+          _profileSubtitle = activeProfileList[0].title;
+          _volumeSlider = activeProfileList[0].volume;
+        }
         return ExpansionTile(
+          key: Key(_key.toString()),
+          initiallyExpanded: false,
           children: favoriteProfileList
               .map((item) => ListTile(
                     title: Text(item.title),
                     onTap: () {
+                      model.toggleProfilesInactiveStatus();
                       setState(() {
                         _profileTitle = item.title;
-                        // _profileSubtitle = item.title;
                         _volumeSlider = item.volume;
+                        item.isActive = true;
                       });
+                       _collapse();
                     },
                   ))
               .toList(),
           title: Text(_profileTitle),
           trailing: Icon(Icons.keyboard_arrow_down),
         );
-      } else {
-        return ListTile(
-          // leading: Icon(Icons.account_circle),
-          title: Text(_profileTitle),
-          subtitle: Text(_profileSubtitle),
-          trailing: Icon(Icons.keyboard_arrow_down),
-        );
       }
+      return ListTile(
+        // leading: Icon(Icons.account_circle),
+        title: Text('$_profileTitle$_profileSubtitle'),
+      );
     });
   }
 
@@ -87,6 +110,7 @@ class _RecordAudioState extends State<RecordAudio> {
               FluidSlider(
                 value: _volumeSlider,
                 onChanged: (double value) {
+                  model.toggleProfilesInactiveStatus();
                   setState(() {
                     _volumeSlider = value;
                     model.setVolumeSliderValue(_volumeSlider);
@@ -156,7 +180,8 @@ class _RecordAudioState extends State<RecordAudio> {
       return ListView(
         children: <Widget>[
           _buildLogo(),
-          _buildSelectProfile(model.displayActiveProfile, model.displayFavoriteProfiles),
+          _buildSelectProfile(
+              model.displayActiveProfile, model.displayFavoriteProfiles),
           _buildVolumeSlider(),
           _buildButtonRow(),
           _buildVolumeWave(),
