@@ -70,7 +70,7 @@ class _RecordAudioState extends State<RecordAudio> {
           initiallyExpanded: false,
           children: favoriteProfileList
               .map((item) => ListTile(
-                    title: Text(item.title),
+                    title: Text(item.title, textAlign: TextAlign.center,),
                     onTap: () {
                       model.toggleProfilesInactiveStatus();
                       setState(() {
@@ -83,13 +83,13 @@ class _RecordAudioState extends State<RecordAudio> {
                     },
                   ))
               .toList(),
-          title: Text(_profileTitle),
+          title: Text(_profileTitle, textAlign: TextAlign.center,),
           trailing: Icon(Icons.keyboard_arrow_down),
         );
       }
       return ListTile(
-        // leading: Icon(Icons.account_circle),
-        title: Text('$_profileTitle$_profileSubtitle'),
+        contentPadding: EdgeInsets.only(top: 10),
+        title: Text('$_profileTitle$_profileSubtitle', textAlign: TextAlign.center,),
       );
     });
   }
@@ -98,16 +98,13 @@ class _RecordAudioState extends State<RecordAudio> {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return Container(
-          margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
+          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+          padding: EdgeInsets.only(bottom: 30),
           child: Column(
             children: <Widget>[
               SizedBox(
                 height: 60.0,
               ),
-              // Align(
-              //   alignment: Alignment(-0, 0.0),
-              //   child: Text('Volume:$roundVolume\n\n'),
-              // ),
               FluidSlider(
                 value: _volumeSlider,
                 onChanged: (double value) {
@@ -165,7 +162,7 @@ class _RecordAudioState extends State<RecordAudio> {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return Container(
-          padding: EdgeInsets.only(bottom: 20),
+          padding: EdgeInsets.only(top: 20),
           child: Image(
               image: model.isRecording
                   ? AssetImage('res/images/wave.gif')
