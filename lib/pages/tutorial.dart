@@ -38,26 +38,67 @@ class _TutorialPageState extends State<TutorialPage> {
         children: <Widget>[
           PageView(
             children: <Widget>[
-              Container(), // Page 1
-              Container(), // Page 2
+              Container(
+                //__Page1__//
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset(
+                        'res/images/app_home.png',
+                        scale: 8,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(5.0),
+                      child: Text(
+                        "Om snel te starten hoef je alleen \nje volume in te stellen (groene balk) \n"
+                            "en de knop met de microfoon in te drukken.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                //__Page2__//
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset(
+                        'res/images/app_profiel.png',
+                        scale: 8,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(5.0),
+                      child: Text(
+                        "Maak een profiel aan om de instellingen te bewaren. "
+                            "Activeren kan in het profiel zelf, \nals je het profiel favoriet maakt \n"
+                            "kan je deze gebruiken op het home scherm.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Container(
                 //__Page3__//
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       child: Image.asset(
                         'res/images/app_drawer.png',
-                        scale: 7,
+                        scale: 8,
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.all(5.0),
                       child: Text(
-                        "De handleiding is terug te vinden in het menu.",
+                        "Wil je de handleiding nog eens terug willen lezen, deze is terug te vinden in het menu.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 16),
                       ),
                     )
                   ],
