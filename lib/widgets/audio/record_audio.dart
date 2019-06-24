@@ -77,6 +77,7 @@ class _RecordAudioState extends State<RecordAudio> {
                         _profileTitle = item.title;
                         _volumeSlider = item.volume;
                         item.isActive = true;
+                        model.setVolumeSliderValue(_volumeSlider);
                       });
                        _collapse();
                     },
@@ -113,6 +114,7 @@ class _RecordAudioState extends State<RecordAudio> {
                   model.toggleProfilesInactiveStatus();
                   setState(() {
                     _volumeSlider = value;
+                    print(_volumeSlider);
                     model.setVolumeSliderValue(_volumeSlider);
                   });
                 },
