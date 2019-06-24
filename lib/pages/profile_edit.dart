@@ -42,6 +42,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       builder: (BuildContext context, Widget child, MainModel model) {
         //if slider is not changed, pass the actual value
         if (profile != null) {
+          _formData['volume'] = profile.volume;
           model.setVolumeSliderValue(profile.volume);
         }
         if(profile == null){
