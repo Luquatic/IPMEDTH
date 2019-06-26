@@ -25,20 +25,20 @@ class RecordAudio extends StatefulWidget {
 }
 
 class _RecordAudioState extends State<RecordAudio> {
-   int _key;
+  int _key;
 
-      _collapse() {
-        int newKey;
-        do {
-          _key = new Random().nextInt(10000);
-        } while(newKey == _key);
-      }
+  _collapse() {
+    int newKey;
+    do {
+      _key = new Random().nextInt(10000);
+    } while (newKey == _key);
+  }
 
-      @override
-      void initState() {
-        super.initState();
-        _collapse();
-      }
+  @override
+  void initState() {
+    super.initState();
+    _collapse();
+  }
 
   Widget _buildLogo() {
     return Container(
@@ -70,7 +70,10 @@ class _RecordAudioState extends State<RecordAudio> {
           initiallyExpanded: false,
           children: favoriteProfileList
               .map((item) => ListTile(
-                    title: Text(item.title, textAlign: TextAlign.center,),
+                    title: Text(
+                      item.title,
+                      textAlign: TextAlign.center,
+                    ),
                     onTap: () {
                       model.toggleProfilesInactiveStatus();
                       setState(() {
@@ -79,17 +82,23 @@ class _RecordAudioState extends State<RecordAudio> {
                         item.isActive = true;
                         model.setVolumeSliderValue(_volumeSlider);
                       });
-                       _collapse();
+                      _collapse();
                     },
                   ))
               .toList(),
-          title: Text(_profileTitle, textAlign: TextAlign.center,),
+          title: Text(
+            _profileTitle,
+            textAlign: TextAlign.center,
+          ),
           trailing: Icon(Icons.keyboard_arrow_down),
         );
       }
       return ListTile(
         contentPadding: EdgeInsets.only(top: 10),
-        title: Text('$_profileTitle$_profileSubtitle', textAlign: TextAlign.center,),
+        title: Text(
+          '$_profileTitle$_profileSubtitle',
+          textAlign: TextAlign.center,
+        ),
       );
     });
   }
