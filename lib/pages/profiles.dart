@@ -25,31 +25,36 @@ class ProfilesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
-        return Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: true,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/home');
-              }, 
-            ),
-            title: Text('Profielen'),
-            actions: <Widget>[
-              IconButton(
-                color: Colors.white,
-                icon: Icon(model.displayFavoritesOnly
-                    ? Icons.favorite
-                    : Icons.favorite_border),
+        return WillPopScope(
+          onWillPop: () {
+            Navigator.pushReplacementNamed(context, '/home');
+          },
+          child: Scaffold(
+            appBar: AppBar(
+              automaticallyImplyLeading: true,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  model.toggleDisplayMode();
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
-            ],
+              title: Text('Profielen'),
+              actions: <Widget>[
+                IconButton(
+                  color: Colors.white,
+                  icon: Icon(model.displayFavoritesOnly
+                      ? Icons.favorite
+                      : Icons.favorite_border),
+                  onPressed: () {
+                    model.toggleDisplayMode();
+                  },
+                ),
+              ],
+            ),
+            body: Profiles(),
+            floatingActionButton:
+                _buildFloatingActionButton(context, model.selectProfile),
           ),
-          body: Profiles(),
-          floatingActionButton:
-              _buildFloatingActionButton(context, model.selectProfile),
         );
       },
     );
