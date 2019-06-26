@@ -52,7 +52,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         //if slider is not changed, pass the actual value
         if (profile != null) {
           // TODO: change this to the right value
-          _formData['volume'] =  _volumeSlider;
+          _formData['volume'] =  profile.volume;
         }
         // pass the value even if the slider is not changed. That way errors will be prevented.
         else {
@@ -63,6 +63,10 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           // set the new state of the volumeslider and save it to the formData
           onChanged: (double value) {
             setState(() {
+              if(profile != null){
+                profile.volume = value;
+                _formData['volume'] = value;
+              }
               _volumeSlider = value;  
               _formData['volume'] = value;
             });
