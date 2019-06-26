@@ -1,5 +1,5 @@
 /*
-  this file is used to create/edit a profile
+  this page is used to create/edit a profile
 */
 
 //libraries
@@ -51,7 +51,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       builder: (BuildContext context, Widget child, MainModel model) {
         //if slider is not changed, pass the actual value
         if (profile != null) {
-          // TODO: change this to the right value
           _formData['volume'] =  profile.volume;
         }
         // pass the value even if the slider is not changed. That way errors will be prevented.
@@ -63,6 +62,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           // set the new state of the volumeslider and save it to the formData
           onChanged: (double value) {
             setState(() {
+              //set the state depending if it was an update or add
               if(profile != null){
                 profile.volume = value;
                 _formData['volume'] = value;
@@ -71,6 +71,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               _formData['volume'] = value;
             });
           },
+          // set the min/max value for the slider
           min: 0.0,
           max: 100.0,
         );
@@ -119,10 +120,12 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   // build the form page
   Widget _buildPageContent(BuildContext context, Profile profile) {
+    //checks if a profile is tapped and focus on that container
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
       },
+      // build the layout
       child: Container(
         margin: EdgeInsets.all(10.0),
         child: Form(

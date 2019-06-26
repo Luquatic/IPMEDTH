@@ -1,3 +1,7 @@
+/*
+  this page is used to display the tutorial of the app
+*/
+
 //libraries
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -12,28 +16,33 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
+  // variables to keep track of the pages
   int _currentIndexPage;
   int _pageLength;
 
   @override
   void initState() {
+    // there are 3 tutorial pages, starting at 0 (the first page)
     _currentIndexPage = 0;
     _pageLength = 3;
     super.initState();
   }
-
+  // build the page content
   Widget _buildPageContent(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //the tutorial is loaded on startup
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
+            // return to homepage when done
             Navigator.pushReplacementNamed(context, '/home');
           },
         ),
         title: Text('Handleiding'),
       ),
+      //Load the pages
       body: Stack(
         children: <Widget>[
           PageView(
@@ -115,6 +124,7 @@ class _TutorialPageState extends State<TutorialPage> {
     );
   }
 
+  // change the styling of the dots at the bottom
   Widget _buildDotsDecorator(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 20.0),

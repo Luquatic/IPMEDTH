@@ -1,3 +1,7 @@
+/*
+  this is the model for the profiles
+*/
+
 import 'package:flutter/material.dart';
 
 class Profile {

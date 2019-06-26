@@ -1,5 +1,5 @@
 /*
-  this file is used to make the menu bar and load the RecordAudio widget
+  this page is used to make the menu bar and load the RecordAudio widget
 */
 
 //libraries

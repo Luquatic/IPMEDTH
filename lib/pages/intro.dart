@@ -1,5 +1,5 @@
 /*
-  this file is used to load the intro pages
+  this page is used to load the intro pages
 */
 
 //libraries
@@ -16,9 +16,6 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
-  bool _reminder = false;
-  bool _donotRemind = false;
-
   // build intro dialog
   Widget _buildIntroDialog() {
     return SimpleDialog(
@@ -27,23 +24,7 @@ class _IntroPageState extends State<IntroPage> {
         SimpleDialogOption(
           child: Text(
               'Volg de korte handleiding door op volgende te klikken, hier vind je een uitleg over de applicatie.'
-                  '\n\nLiever niet, geen probleem de handleiding is altijd terug te vinden in het menu.'),
-        ),
-        SimpleDialogOption(
-          child: Row(
-            children: <Widget>[
-              Checkbox(
-                value: _reminder,
-                onChanged: (bool value) {
-                  setState(() {
-                    print(_reminder);
-                    _reminder = value;
-                  });
-                },
-              ),
-              Text('Herinner mij niet meer'),
-            ],
-          ),
+              '\n\nLiever niet, geen probleem de handleiding is altijd terug te vinden in het menu.'),
         ),
         SimpleDialogOption(
           child: Row(
@@ -52,13 +33,14 @@ class _IntroPageState extends State<IntroPage> {
               RaisedButton(
                 child: Text('Sluiten'),
                 onPressed: () {
-                  _donotRemind = _reminder;
+                  // return to home if the user wants no tutorial
                   Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
               RaisedButton(
                 child: Text('Volgende'),
                 onPressed: () {
+                  // start tutorial
                   Navigator.pushReplacementNamed(context, '/tutorial');
                 },
               )
@@ -71,15 +53,11 @@ class _IntroPageState extends State<IntroPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(_reminder);
-
-    return _donotRemind == false
-        ? Scaffold(
-            appBar: AppBar(
-              title: Text('Applaudio!'),
-            ),
-            body: _buildIntroDialog(),
-          )
-        : HomePage();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Applaudio!'),
+      ),
+      body: _buildIntroDialog(),
+    );
   }
 }
