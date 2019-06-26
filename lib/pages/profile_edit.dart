@@ -11,8 +11,6 @@ import 'package:scoped_model/scoped_model.dart';
 import '../scoped_models/main.dart';
 import '../models/profile.dart';
 
-double _volumeSlider = 0.0;
-
 class ProfileEditPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -25,6 +23,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   final Map<String, dynamic> _formData = {'title': null, 'volume': null};
   // make a key (id) for the form
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // initialize variable for the volumeSlider
+  double _volumeSlider = 0.0;
   // build the Title field
   Widget _buildTitleTextField(Profile profile) {
     return TextFormField(
@@ -51,20 +51,20 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       builder: (BuildContext context, Widget child, MainModel model) {
         //if slider is not changed, pass the actual value
         if (profile != null) {
-          _formData['volume'] = _volumeSlider;
-          model.setVolumeSliderValue(profile.volume);
+          // TODO: change this to the right value
+          _formData['volume'] =  _volumeSlider;
         }
         // pass the value even if the slider is not changed. That way errors will be prevented.
-        if (profile == null) {
+        else {
           _formData['volume'] = _volumeSlider;
         }
         return FluidSlider(
-          value: _volumeSlider,
+          value: _formData['volume'],
           // set the new state of the volumeslider and save it to the formData
           onChanged: (double value) {
             setState(() {
-              _volumeSlider = value;
-              _formData['volume'] = _volumeSlider;
+              _volumeSlider = value;  
+              _formData['volume'] = value;
             });
           },
           min: 0.0,

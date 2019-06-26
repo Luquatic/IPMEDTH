@@ -129,6 +129,7 @@ mixin RecordAudioModel on ConnectedProfilesModel {
     }
   }
 
+
   Future<double> setVolumeSliderValue(double value) async {
     double result;
     try {
