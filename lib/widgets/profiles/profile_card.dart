@@ -1,3 +1,7 @@
+/*
+  this widget builds the card to display a profile on the profiles page
+*/
+
 //libraries
 import 'package:flutter/material.dart';
 
@@ -10,11 +14,13 @@ import '../../models/profile.dart';
 import '../../pages/profile_edit.dart';
 
 class ProfileCard extends StatelessWidget {
+  // initialize the profile
   final Profile profile;
   final int profileIndex;
 
   ProfileCard(this.profile, this.profileIndex);
 
+  // close button to delete a profile
   Widget _buildCloseButton() {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
@@ -39,7 +45,7 @@ class ProfileCard extends StatelessWidget {
       },
     );
   }
-
+  // display the profile title
   Widget _buildTitleContainer() {
     return Container(
       padding: EdgeInsets.only(top: 10.0),
@@ -61,7 +67,7 @@ class ProfileCard extends StatelessWidget {
       ),
     );
   }
-
+  // display the icons for favorite and edit
   Widget _buildIconBar(BuildContext context) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
@@ -99,9 +105,11 @@ class ProfileCard extends StatelessWidget {
     );
   }
 
+  // button to make profile active from profile page
   Widget _buildIsActiveButton(BuildContext context) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
+        // check if profile is active
         if (model.profiles[profileIndex].isActive) {
           return Center(
             child: OutlineButton(
@@ -113,7 +121,7 @@ class ProfileCard extends StatelessWidget {
                 style: TextStyle(color: Theme.of(context).primaryColor),
               )),
               onPressed: () {
-                //do nothing
+                //do nothing with the button if profile is active
               },
             ),
           );
@@ -126,6 +134,7 @@ class ProfileCard extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               )),
               onPressed: () {
+                // make this the active profile
                 model.toggleProfilesInactiveStatus();
                 model.selectProfile(profileIndex);
                 model.toggleProfileActiveStatus();
@@ -142,6 +151,7 @@ class ProfileCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
+          // build the functions
           _buildCloseButton(),
           _buildTitleContainer(),
           Text('Volume: ' + profile.volume.toStringAsFixed(0)),

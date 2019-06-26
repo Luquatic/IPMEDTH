@@ -1,3 +1,7 @@
+/*
+  In this file the base theme for the app is defined
+*/
+
 import 'package:flutter/material.dart';
 
 
