@@ -1,3 +1,7 @@
+/*
+  this file is used to load the intro pages
+*/
+
 //libraries
 import 'package:flutter/material.dart';
 
@@ -15,6 +19,7 @@ class _IntroPageState extends State<IntroPage> {
   bool _reminder = false;
   bool _donotRemind = false;
 
+  // build intro dialog
   Widget _buildIntroDialog() {
     return SimpleDialog(
       title: Text('Uitleg over Applaudio!'),

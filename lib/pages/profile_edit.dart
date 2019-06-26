@@ -1,3 +1,7 @@
+/*
+  this file is used to create/edit a profile
+*/
+
 //libraries
 import 'package:flutter/material.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart'; //Fluid Slider
@@ -17,26 +21,31 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
+  // store the title and the volume
   final Map<String, dynamic> _formData = {'title': null, 'volume': null};
-
+  // make a key (id) for the form
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  // build the Title field
   Widget _buildTitleTextField(Profile profile) {
     return TextFormField(
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(labelText: 'Titel'),
+      // check if there is a profile title and display that title if there is. Otherwise display an empty field (create/edit)
       initialValue: profile == null ? '' : profile.title,
       validator: (String value) {
+        // title must be at least one character
         if (value.length < 1) {
           return 'Titel is vereist';
         }
       },
+      // save the title
       onSaved: (String value) {
         _formData['title'] = value;
       },
     );
   }
 
+  // build the slider
   Widget _buildVolumeSlider(Profile profile) {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
@@ -45,11 +54,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           _formData['volume'] = _volumeSlider;
           model.setVolumeSliderValue(profile.volume);
         }
-        if(profile == null){
+        // pass the value even if the slider is not changed. That way errors will be prevented.
+        if (profile == null) {
           _formData['volume'] = _volumeSlider;
         }
         return FluidSlider(
           value: _volumeSlider,
+          // set the new state of the volumeslider and save it to the formData
           onChanged: (double value) {
             setState(() {
               _volumeSlider = value;
@@ -63,30 +74,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-  // Widget _buildVolumeTextfield(Profile profile) {
-  //   return TextFormField(
-  //     keyboardType: TextInputType.number,
-  //     decoration: InputDecoration(labelText: 'Volume'),
-  //     initialValue: profile == null ? '' : profile.volume.toString(),
-  //     validator: (int value) {
-  //       if (value.isEmpty || value <= 0 || value >= 100) {
-  //         return 'Volume is vereist';
-  //       } else if (!RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
-  //         return 'Volume moet een getal zijn';
-  //       }
-  //     },
-  //     onSaved: (String value) {
-  //       _formData['volume'] = double.parse(value);
-  //     },
-  //   );
-  // }
-
+  // build submit button
   Widget _buildSubmitButton() {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return RaisedButton(
-          // color: Theme.of(context).primaryColor,
           child: Text('Opslaan'),
+          // save the formData onpressed. Call the right methods from the scoped_model
           onPressed: () => _submitForm(model.addProfile, model.updateProfile,
               model.selectedProfileIndex),
         );
@@ -94,12 +88,16 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
+  // save the submitForm
   void _submitForm(Function addProfile, Function updateProfile,
       [int selectedProfileIndex]) {
+    // check validation
     if (!_formKey.currentState.validate()) {
       return;
     }
+    // save the state of the form
     _formKey.currentState.save();
+    // check if it was an update or add
     if (selectedProfileIndex == null) {
       addProfile(Profile(
         title: _formData['title'],
@@ -111,9 +109,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         volume: _formData['volume'],
       ));
     }
+    // return to the profiles screen
     Navigator.pushNamed(context, '/profiles');
   }
 
+  // build the form page
   Widget _buildPageContent(BuildContext context, Profile profile) {
     return GestureDetector(
       onTap: () {
@@ -124,16 +124,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         child: Form(
           key: _formKey,
           child: ListView(
-            // padding: EdgeInsets.symmetric(horizontal:),
             children: <Widget>[
+              // call the functions to build the textfield, volumeslider and submit button
               _buildTitleTextField(profile),
               SizedBox(
                 height: 70.0,
               ),
               _buildVolumeSlider(profile),
-
-              //_buildVolumeSider(profile), ToDo- fix layout so slider is available
-
               SizedBox(
                 height: 20.0,
               ),
@@ -147,10 +144,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    // build the content with the model
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
+        // store the _buildPageContent function
         final Widget pageContent =
             _buildPageContent(context, model.selectedProfile);
+        // check if a profile is added or edited and display the right title in the appBar
         return model.selectedProfileIndex == null
             ? Scaffold(
                 appBar: AppBar(

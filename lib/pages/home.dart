@@ -1,3 +1,7 @@
+/*
+  this file is used to make the menu bar and load the RecordAudio widget
+*/
+
 //libraries
 import 'package:flutter/material.dart';
 
@@ -5,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../widgets/audio/record_audio.dart';
 
 class HomePage extends StatelessWidget {
+  // make the menu
   Widget _buildSideDrawer(BuildContext context) {
     return Drawer(
       child: Column(
@@ -36,10 +41,12 @@ class HomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      // create the menu
       drawer: _buildSideDrawer(context),
       appBar: AppBar(
         title: Text(''),
       ),
+      // load the recordAudio widget
       body: RecordAudio(),
       // bottomNavigationBar: _buildVolumeWave(),
     );

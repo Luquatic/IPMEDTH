@@ -19,6 +19,7 @@ public class MainActivity extends FlutterActivity {
   private static final int WAVEMAKER2_REQUEST = 0;
   private static final String TAG = MainActivity.class.toString();
 
+  //initialize cpp methods
   static native void create();
   static native void delete();
   static native void setEchoOn(boolean isEchoOn);
@@ -42,9 +43,10 @@ public class MainActivity extends FlutterActivity {
     //put the phone in vibrate mode when the app starts to silence incoming messages and calls
     am = (AudioManager) getSystemService(getApplicationContext().AUDIO_SERVICE);
     previousRingerMode = am.getRingerMode();    //store previous ring mode to change it back when app is closed
-
+    // load Flutter functions by the name audiorecorder (this name is a reference to the Flutter call of the methods)
     new MethodChannel(getFlutterView(), "audiorecorder").setMethodCallHandler(
             (call, result) -> {
+              // call the Flutter methods, and execute the Java methods when they are called
               switch(call.method){
                 case "setVolumeSliderValue":
                   double waarde = call.argument("waarde");
@@ -76,7 +78,7 @@ public class MainActivity extends FlutterActivity {
     delete();
     super.onDestroy();
   }
-
+  // put the recorder on/off
   public void toggleAudioRecordingEcho() {
     if (isPlaying) {
       stopEchoing();
@@ -84,16 +86,17 @@ public class MainActivity extends FlutterActivity {
       startEchoing();
     }
   }
-
+  // start the recorder
   private void startEchoing() {
     Log.d(TAG, "Attempting to start");
-
+    //cpp method
     setEchoOn(true);
     isPlaying = true;
   }
-
+  // stop the recorder
   private void stopEchoing() {
     Log.d(TAG, "Playing, attempting to stop");
+    //cpp method
     setEchoOn(false);
     isPlaying = false;
   }
