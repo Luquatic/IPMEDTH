@@ -24,7 +24,7 @@ class _IntroPageState extends State<IntroPage> {
         SimpleDialogOption(
           child: Text(
               'Volg de korte handleiding door op volgende te klikken, hier vind je een uitleg over de applicatie.'
-              '\n\nLiever niet, geen probleem de handleiding is altijd terug te vinden in het menu.'),
+              '\n\nDe handleiding is altijd terug te vinden in het menu.'),
         ),
         SimpleDialogOption(
           child: Row(
